@@ -111,7 +111,7 @@ footer .rule{width:120px;height:1px;background:var(--line);margin:0 auto 12px}
       <button class="btn btn-gold" onclick="startJourney()">ابدأ الرحلة</button>
     </div>
     <button class="btn btn-ghost" onclick="discover()">اكتشف مكانًا</button>
-    <div class="hint">أول رحلة تجريبية: الجيزة — ريف درعا — سنة 1950 (قريبًا)</div>
+    <div class="hint">رحلتان تجريبيتان: <a href="/place.html?p=jeeza" style="color:#c9973f">الجيزة 1950</a> — <a href="/place.html?p=bosra" style="color:#c9973f">بصرى الشام</a></div>
 
     <div class="result" id="result"></div>
 
@@ -138,7 +138,9 @@ function startJourney(){
     return;
   }
   if(q.indexOf('جيزة') !== -1 || q.indexOf('جيز') !== -1){
-    box.innerHTML = '<b>الجيزة — ريف درعا</b><br/>أول رحلة تجريبية: <b>سنة 1950</b> — المكان، العائلة، العملة، التجارة، الأحداث...<br/><a href="/place.html" style="color:#c9973f;font-weight:800">افتح صفحة الجيزة ←</a>';
+    box.innerHTML = '<b>الجيزة — ريف درعا</b><br/>أول رحلة تجريبية: <b>سنة 1950</b> — المكان، العائلة، العملة، التجارة، الأحداث...<br/><a href="/place.html?p=jeeza" style="color:#c9973f;font-weight:800">افتح صفحة الجيزة ←</a>';
+  } else if(q.indexOf('بصر') !== -1){
+    box.innerHTML = '<b>بصرى الشام — مدينة التاريخ المفتوح</b><br/>المسرح الروماني، القلعة الأيوبية، 20 قرنًا من الطبقات...<br/><a href="/place.html?p=bosra" style="color:#c9973f;font-weight:800">افتح صفحة بصرى ←</a>';
   } else {
     box.innerHTML = 'المكان: <b>' + q.replace(/</g,'&lt;') + '</b><br/>سيُضاف قريبًا — يمكنك أن تكون أول من يضيف قصة عنه.';
   }
@@ -146,7 +148,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = 'أماكن مقترحة للبداية: <b>الجيزة</b> — درعا — حوران...<br/>اكتب اسم مكانك في البحث وابدأ الرحلة.';
+  box.innerHTML = 'أماكن مقترحة للبداية: <b><a href="/place.html?p=jeeza" style="color:#c9973f">الجيزة</a></b> — <b><a href="/place.html?p=bosra" style="color:#c9973f">بصرى الشام</a></b>...<br/>أو اكتب اسم مكانك في البحث وابدأ الرحلة.';
 }
 function soon(){
   var box = document.getElementById('result');

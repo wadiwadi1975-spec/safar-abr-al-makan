@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>الجيزة — السفر عبر المكان</title>
-<meta name="description" content="الجيزة، ريف درعا — سافر عبر الزمن واكتشف تاريخ المكان" />
+<title id="docTitle">المكان — السفر عبر المكان</title>
+<meta name="description" content="سافر عبر الزمن واكتشف تاريخ المكان" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
@@ -30,13 +30,14 @@ header nav a:hover{color:var(--copper)}
 .hero h1{font-family:'Aref Ruqaa',serif;font-size:clamp(40px,7vw,68px)}
 .hero .region{color:var(--copper);font-size:17px;margin-top:4px}
 .hero img{width:100%;border-radius:18px;margin-top:20px;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.hero .before{margin-top:16px;color:var(--muted);font-size:16px}
+.hero .credit{font-size:11px;color:#6f695b;margin-top:6px}
+.hero .before{margin-top:14px;color:var(--muted);font-size:16px}
 .timeline{margin-top:34px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:24px 22px}
 .timeline h2{font-size:20px;color:var(--copper);margin-bottom:4px}
 .timeline .year-big{font-family:'Aref Ruqaa',serif;font-size:52px;color:var(--parchment);margin:6px 0}
 .timeline .era{line-height:2;color:#cfc5ab;font-size:15px;min-height:90px}
 input[type=range]{width:100%;margin:18px 0 6px;accent-color:var(--copper)}
-.stops{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.stops{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:4px}
 .stops b{cursor:pointer;padding:4px 6px;border-radius:6px}
 .stops b.on,.stops b:hover{color:var(--copper);background:rgba(201,151,63,.1)}
 .layers{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
@@ -73,15 +74,16 @@ footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
   </header>
 
   <section class="hero">
-    <h1 id="pName">الجيزة</h1>
-    <div class="region" id="pRegion">ريف درعا — سوريا</div>
-    <img id="pImg" src="/jeeza-home.jpg" alt="الجيزة" />
+    <h1 id="pName">...</h1>
+    <div class="region" id="pRegion">...</div>
+    <img id="pImg" src="" alt="" />
+    <div class="credit" id="pCredit"></div>
     <p class="before">قبل أن تصبح هذه الصورة... كان هنا تاريخ طويل. حرّك الزمن واكتشفه.</p>
   </section>
 
   <section class="timeline">
     <h2>الخط الزمني</h2>
-    <div class="year-big" id="yearBig">1950</div>
+    <div class="year-big" id="yearBig"></div>
     <input type="range" id="timeRange" min="0" max="6" step="1" value="3" oninput="setYear(this.value)" />
     <div class="stops" id="stops"></div>
     <p class="era" id="eraText"></p>
@@ -99,55 +101,102 @@ footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
 
   <div class="cta">
     <button class="btn btn-gold" onclick="soon()">اكتشف العالم الذي عاشوا فيه</button>
-    <button class="btn btn-ghost" onclick="soon()">قارن 1950 × 2026</button>
+    <button class="btn btn-ghost" onclick="soon()">قارن الماضي × الحاضر</button>
   </div>
 
   <footer>السفر عبر المكان — نبدأ بالإنسان لنكتشف تاريخ المنطقة</footer>
 </div>
 
 <script>
-var YEARS = [1800, 1850, 1900, 1950, 1970, 2000, 2026];
-var ERAS = {
-  1800: '🟡 قرية حورانية عريقة تعيش على الزراعة. بيوت حجرية من البازلت الأسود، وحقول قمح تمتد حتى الأفق، وقوافل تربطها بدرعا ودمشق.',
-  1850: '🟡 الحياة قروية مستقرة: الفلاحة وتربية الماشية أساس الرزق، والسوق الأسبوعي في المنطقة يجمع القرى المجاورة.',
-  1900: '🟠 أواخر العهد العثماني: الجيزة قرية في قضاء حوران. السجلات العثمانية (1596م) ذكرتها باسم Jiza ضمن ناحية بُثينة — والزراعة ما تزال قلب الحياة.',
-  1950: '🟢 الرحلة التجريبية: بعد استقلال سوريا، قرية نابضة — بيوت حجرية، عائلات فلاحية، الليرة السورية عملة التداول، قمح حوران وماشيته في الأسواق، والمسجد مركز الحياة. افتح الطبقات بالأسفل.',
-  1970: '🟠 توسع عمراني وتعليم: مدارس جديدة، طرق محسنة، وأبناء القرية بين الفلاحة والوظائف.',
-  2000: '🟠 الجيزة الحديثة: خدمات بلدية منظمة، كهرباء ومياه واتصالات، ونمو سكاني متسارع.',
-  2026: '🔵 اليوم: بلدية الجيزة تخدم الأهالي رقميًا — مشاريع طرق وإنارة، مناقصات معلنة، وخدمات إلكترونية.'
+var PLACES = {
+jeeza: {
+  name: 'الجيزة', region: 'ريف درعا — سوريا',
+  img: '/jeeza-home.jpg', credit: 'صورة البلدة — أرشيف المشروع',
+  years: [1800, 1850, 1900, 1950, 1970, 2000, 2026], def: 3,
+  eras: {
+    1800: '🟡 قرية حورانية عريقة تعيش على الزراعة. بيوت حجرية من البازلت الأسود، وحقول قمح تمتد حتى الأفق، وقوافل تربطها بدرعا ودمشق.',
+    1850: '🟡 الحياة قروية مستقرة: الفلاحة وتربية الماشية أساس الرزق، والسوق الأسبوعي في المنطقة يجمع القرى المجاورة.',
+    1900: '🟠 أواخر العهد العثماني: الجيزة قرية في قضاء حوران. السجلات العثمانية (1596م) ذكرتها باسم Jiza ضمن ناحية بُثينة — والزراعة ما تزال قلب الحياة.',
+    1950: '🟢 الرحلة التجريبية: بعد استقلال سوريا، قرية نابضة — بيوت حجرية، عائلات فلاحية، الليرة السورية عملة التداول، قمح حوران وماشيته في الأسواق، والمسجد مركز الحياة. افتح الطبقات بالأسفل.',
+    1970: '🟠 توسع عمراني وتعليم: مدارس جديدة، طرق محسنة، وأبناء القرية بين الفلاحة والوظائف.',
+    2000: '🟠 الجيزة الحديثة: خدمات بلدية منظمة، كهرباء ومياه واتصالات، ونمو سكاني متسارع.',
+    2026: '🔵 اليوم: بلدية الجيزة تخدم الأهالي رقميًا — مشاريع طرق وإنارة، مناقصات معلنة، وخدمات إلكترونية.'
+  },
+  layers: [
+    {i:'🏠',t:'المكان',d:'🟡 بيوت حجرية بسقوف من جذوع الأشجار والطين، أزقة ضيقة، وآبار لجمع المياه.'},
+    {i:'👨‍👩‍👧',t:'الناس',d:'🟡 عائلات فلاحية ممتدة يسكنها الجد والأبناء — اسم عائلتك قد يكون هنا. أضف قصتك.'},
+    {i:'🍲',t:'الحياة',d:'🟡 خبز التنور، البرغل واللبن، والضيافة مقدسة لا تُرد.'},
+    {i:'👕',t:'المجتمع',d:'🟡 القمباز والحطة للرجال، والأثواب المطرزة للنساء في المناسبات.'},
+    {i:'💰',t:'الاقتصاد',d:'🟢 العملة: الليرة السورية. المهن: زراعة القمح والبقوليات وتربية الماشية، وتجارة عبر سوق درعا.'},
+    {i:'🌾',t:'الأرض',d:'🟢 سهول حوران الخصبة ووادي الزيدي — شريان الماء والزراعة.'},
+    {i:'⚔️',t:'الأحداث',d:'🟢 بعد الاستقلال (1946): دولة جديدة، إدارة محلية تتشكل، وانعكاسات الأحداث الإقليمية على الريف.'},
+    {i:'🕌',t:'الثقافة',d:'🟡 المسجد مركز الحياة اليومية والمناسبات، وكبار السن ذاكرة القرية.'},
+    {i:'🗣️',t:'اللغة',d:'🟡 اللهجة الحورانية بكلماتها الخاصة — سجّل كلمة يتذكرها أجدادك.'},
+    {i:'📜',t:'الوثائق',d:'🔵 صور وسجلات تُجمع الآن — هل تملك صورة قديمة للجيزة؟ شاركها.'}
+  ]
+},
+bosra: {
+  name: 'بصرى الشام', region: 'ريف درعا — سوريا (تراث عالمي)',
+  img: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Syria_bosra_theater.jpg',
+  credit: 'المسرح الروماني — تصوير Georgios / ويكيميديا (ملكية عامة)',
+  years: ['106م', '135م', '500م', '636م', '1200م', '1950م', '2026م'], def: 0,
+  eras: {
+    '106م': '🟢 سنة التحوّل الكبرى: بوفاة الملك النبطي رابال الثاني ضمّ تراجان المملكة، وأصبحت بصرى عاصمة الولاية العربية الرومانية — ومن هنا بدأ مجدها.',
+    '135م': '🟢 المسرح يُبنى (117-138م، عهد هادريانوس): بازلت أسود، قطره 102م، 37 صفًا، 10-15 ألف متفرج — عروض يونانية ولاتينية ودينية بالموسيقى والرقص.',
+    '500م': '🟠 بصرى البيزنطية: كاتدرائية وأساقفة، وطريق تراجان الجديدة تعبرها القوافل — تجارة البخور والتوابل والحبوب.',
+    '636م': '🟢 معركة اليرموك ودخول الإسلام: الجامع العمري من أقدم مساجد العالم، والمدينة محطة على طريق الحج والتجارة.',
+    '1200م': '🟢 القلعة الأيوبية: الملك العادل وأولاده يحوّلون المسرح إلى حصن — 9 أبراج وخندق وجسر خشبي لحماية طريق الحج.',
+    '1950م': '🟢 ولادة المسرح من جديد: مصلحة الآثار السورية (1947-1970) بقيادة سليمان مقداد تُفرغ المدرجات من الردم، وبعثة دنماركية 1960 توثّق — ثم تراث عالمي (يونسكو 1980).',
+    '2026م': '🔵 اليوم: قلعة ومسرح ومتحف (1117 قطعة) ومهرجان بصرى الدولي — والمدرجات التي صمدت 19 قرنًا ما تزال تستقبل الجمهور.'
+  },
+  layers: [
+    {i:'🏛️',t:'المكان',d:'🟢 المسرح الروماني الأكمل عالميًا + القلعة الأيوبية حوله + الجامع العمري + الكاتدرائية البيزنطية — طبقات 20 قرنًا في موقع واحد.'},
+    {i:'👨‍👩‍👧',t:'الناس',d:'🟠 أنباط ثم رومان فبيزنطيون فعرب: تجار وحجاج وجنود وحرفيو بازلت — كل طبقة تركت اسمًا وحجرًا.'},
+    {i:'🍲',t:'الحياة',d:'🟡 مطبخ حوراني: قمح وسمن ولبن — وقوافل الحج تحمل معها أطعمة الحجاز والشام.'},
+    {i:'👕',t:'المجتمع',d:'🟡 من الأردية الرومانية إلى العباءة العربية — والبازلت الأسود لباس المدينة نفسها.'},
+    {i:'💰',t:'الاقتصاد',d:'🟢 مفترق طرق: طريق تراجان الجديدة وتجارة البخور والحبوب. العملات عبر العصور: ديناريوس روماني 🟠، صوليدوس بيزنطي 🟠، دينار إسلامي 🟢، قرش عثماني 🟢، ليرة سورية 🟢.'},
+    {i:'🌾',t:'الأرض',d:'🟢 سهل بازلتي على ارتفاع 850م، تحيط به 3 وديان (الزيدي شمالًا) — قمح حوران غذاء الإمبراطوريات.'},
+    {i:'⚔️',t:'الأحداث',d:'🟢 106م الضم الروماني → 636م اليرموك → الحروب الصليبية والتحصين الأيوبي → 1946 الاستقلال والتنقيب → 1980 يونسكو.'},
+    {i:'🕌',t:'الثقافة',d:'🟢 عروض المسرح قديمًا، ومهرجان بصرى الدولي اليوم — 19 قرنًا من الفنون على نفس الحجارة.'},
+    {i:'🗣️',t:'اللغة',d:'🟠 يونانية ولاتينية على المقاعد المرقمة، ثم العربية — والنقوش الثلاث (يونانية/لاتينية/نبطية) في المتحف.'},
+    {i:'📜',t:'الوثائق',d:'🔵 111 صورة أرشيفية في ويكيميديا + مخططات + متحف القلعة (150 قطعة حجرية وتماثيل وفسيفساء دير العدس).'}
+  ]
+}
 };
-var LAYERS = [
-  {i:'🏠',t:'المكان',d:'🟡 بيوت حجرية بسقوف من جذوع الأشجار والطين، أزقة ضيقة، وآبار لجمع المياه.'},
-  {i:'👨‍👩‍👧',t:'الناس',d:'🟡 عائلات فلاحية ممتدة يسكنها الجد والأبناء — اسم عائلتك قد يكون هنا. أضف قصتك.'},
-  {i:'🍲',t:'الحياة',d:'🟡 خبز التنور، البرغل واللبن، والضيافة مقدسة لا تُرد.'},
-  {i:'👕',t:'المجتمع',d:'🟡 القمباز والحطة للرجال، والأثواب المطرزة للنساء في المناسبات.'},
-  {i:'💰',t:'الاقتصاد',d:'🟢 العملة: الليرة السورية. المهن: زراعة القمح والبقوليات وتربية الماشية، وتجارة عبر سوق درعا.'},
-  {i:'🌾',t:'الأرض',d:'🟢 سهول حوران الخصبة ووادي الزيدي — شريان الماء والزراعة.'},
-  {i:'⚔️',t:'الأحداث',d:'🟢 بعد الاستقلال (1946): دولة جديدة، إدارة محلية تتشكل، وانعكاسات الأحداث الإقليمية على الريف.'},
-  {i:'🕌',t:'الثقافة',d:'🟡 المسجد مركز الحياة اليومية والمناسبات، وكبار السن ذاكرة القرية.'},
-  {i:'🗣️',t:'اللغة',d:'🟡 اللهجة الحورانية بكلماتها الخاصة — سجّل كلمة يتذكرها أجدادك.'},
-  {i:'📜',t:'الوثائق',d:'🔵 صور وسجلات تُجمع الآن — هل تملك صورة قديمة للجيزة؟ شاركها.'}
-];
-var cur = 3;
+var P = (function(){
+  try {
+    var q = new URLSearchParams(location.search).get('p');
+    if (q && PLACES[q]) return PLACES[q];
+  } catch(e) {}
+  return PLACES.jeeza;
+})();
+var YEARS = P.years, cur = P.def;
 function renderStops(){
   document.getElementById('stops').innerHTML = YEARS.map(function(y,i){
     return '<b data-i="'+i+'" class="'+(i===cur?'on':'')+'" onclick="setYear('+i+')">'+y+'</b>';
   }).join('');
 }
 function renderLayers(){
-  document.getElementById('layers').innerHTML = LAYERS.map(function(l,i){
+  document.getElementById('layers').innerHTML = P.layers.map(function(l){
     return '<div class="layer" onclick="this.classList.toggle(\'open\')"><div class="ico">'+l.i+'</div><h3>'+l.t+'</h3><p>'+l.d+'</p></div>';
   }).join('');
 }
 function setYear(i){
   cur = +i;
+  document.getElementById('timeRange').max = YEARS.length - 1;
   document.getElementById('timeRange').value = cur;
   document.getElementById('yearBig').textContent = YEARS[cur];
-  document.getElementById('eraText').textContent = ERAS[YEARS[cur]];
+  document.getElementById('eraText').textContent = P.eras[YEARS[cur]];
   renderStops();
 }
-function soon(){ alert('هذا القسم قيد البناء — الرحلة الأولى: الجيزة 1950'); }
-renderStops(); renderLayers(); setYear(3);
+function soon(){ alert('هذا القسم قيد البناء'); }
+document.getElementById('docTitle').textContent = P.name + ' — السفر عبر المكان';
+document.getElementById('pName').textContent = P.name;
+document.getElementById('pRegion').textContent = P.region;
+document.getElementById('pImg').src = P.img;
+document.getElementById('pImg').alt = P.name;
+document.getElementById('pCredit').textContent = P.credit;
+renderLayers(); setYear(cur);
 </script>
 </body>
 </html>
