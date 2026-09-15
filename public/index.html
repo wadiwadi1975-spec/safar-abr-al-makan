@@ -5,30 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>السفر عبر المكان — لا تقرأ التاريخ... ادخل إليه</title>
 <meta name="description" content="السفر عبر المكان — موسوعة زمنية تفاعلية لكل مكان: ابدأ من الإنسان لاكتشاف تاريخ المنطقة" />
+<link rel="icon" type="image/png" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#0b0e0c" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="السفر عبر المكان" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
 <style>
 :root{
   --ink:#0b0e0c;
-  --ink2:#111512;
   --copper:#c9973f;
-  --copper2:#a87b2c;
   --parchment:#e9ddc2;
   --muted:#9a917c;
   --line:rgba(201,151,63,.25);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
 body{
-  font-family:'Tajawal',sans-serif;color:var(--parchment);min-height:100vh;
+  font-family:'Tajawal',sans-serif;color:var(--parchment);min-height:100vh;overflow-x:hidden;
   background:
     radial-gradient(1200px 700px at 50% 30%,rgba(201,151,63,.10),transparent 60%),
     radial-gradient(closest-side at 50% 50%,transparent 40%,rgba(0,0,0,.55) 100%),
-    repeating-linear-gradient(0deg,rgba(201,151,63,.05) 0 1px,transparent 1px 90px),
-    repeating-linear-gradient(90deg,rgba(201,151,63,.05) 0 1px,transparent 1px 90px),
     linear-gradient(180deg,#0d100e,#080a09);
-  display:flex;flex-direction:column;overflow-x:hidden;
 }
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
@@ -41,120 +43,372 @@ body::after{
     linear-gradient(180deg,rgba(8,10,9,.48),rgba(8,10,9,.72)),
     radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.55) 100%);
 }
-.wrap{position:relative;z-index:1;width:100%;max-width:900px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;min-height:100vh}
-header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
-.brand{display:flex;align-items:center;gap:10px;color:var(--parchment);font-weight:800;font-size:17px}
-.brand svg{width:34px;height:34px}
-nav.top{display:flex;gap:22px}
-nav.top a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
+.wrap{position:relative;z-index:1;width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+/* ===== header ===== */
+header.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;color:var(--parchment);font-weight:800;font-size:17px;text-decoration:none}
+.brand svg{width:32px;height:32px}
+nav.top{display:flex;gap:20px;flex-wrap:wrap}
+nav.top a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
 nav.top a:hover{color:var(--copper)}
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 0 20px}
+/* ===== hero ===== */
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 0}
 .kicker{color:var(--copper);font-size:13px;letter-spacing:1px;margin-bottom:14px;border:1px solid var(--line);padding:6px 18px;border-radius:999px}
-h1{font-family:'Aref Ruqaa',serif;font-size:clamp(44px,8vw,84px);font-weight:700;line-height:1.25;color:var(--parchment);text-shadow:0 4px 30px rgba(0,0,0,.6)}
+h1{font-family:'Aref Ruqaa',serif;font-size:clamp(44px,8vw,84px);font-weight:700;line-height:1.3;text-shadow:0 4px 30px rgba(0,0,0,.7)}
 .tagline{margin-top:10px;font-size:clamp(15px,2.6vw,21px);font-weight:300;color:var(--muted);line-height:2}
-.slogan{margin-top:18px;font-family:'Aref Ruqaa',serif;font-size:clamp(18px,3.4vw,26px);color:var(--copper)}
-.search{margin-top:30px;width:100%;max-width:560px;display:flex;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:8px;backdrop-filter:blur(4px)}
-.search input{flex:1;background:transparent;border:none;outline:none;color:var(--parchment);font-family:inherit;font-size:16px;padding:10px 14px}
+.slogan{margin-top:16px;font-family:'Aref Ruqaa',serif;font-size:clamp(18px,3.4vw,26px);color:var(--copper)}
+.search{margin-top:28px;width:100%;max-width:580px;display:flex;gap:8px;background:rgba(10,12,10,.55);border:1px solid var(--line);border-radius:14px;padding:8px;backdrop-filter:blur(6px)}
+.search input{flex:1;background:transparent;border:none;outline:none;color:var(--parchment);font-family:inherit;font-size:16px;padding:10px 14px;min-width:0}
 .search input::placeholder{color:#6f695b}
-.btn{border:none;border-radius:10px;font-family:inherit;font-weight:800;font-size:15px;padding:13px 28px;cursor:pointer;transition:.2s}
+.btn{border:none;border-radius:10px;font-family:inherit;font-weight:800;font-size:15px;padding:13px 28px;cursor:pointer;transition:.2s;text-decoration:none;display:inline-block}
 .btn-gold{background:linear-gradient(180deg,#d9ab4e,#b38530);color:#1a1408;box-shadow:0 6px 24px rgba(201,151,63,.25)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,151,63,.35)}
-.btn-ghost{background:transparent;color:var(--parchment);border:1px solid var(--line);margin-top:12px}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{background:rgba(10,12,10,.5);color:var(--parchment);border:1px solid var(--line)}
 .btn-ghost:hover{border-color:var(--copper);color:var(--copper)}
-.hint{margin-top:10px;font-size:12px;color:#6f695b}
-.result{margin-top:18px;width:100%;max-width:560px;display:none;background:rgba(20,24,20,.85);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:right;line-height:2;font-size:15px}
-.result.show{display:block;animation:fade .4s}
+.result{margin-top:16px;width:100%;max-width:580px;display:none;background:rgba(15,18,15,.88);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-align:right;line-height:2;font-size:15px}
+.result.show{display:block}
 .result b{color:var(--copper)}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.links{margin-top:26px;display:flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;flex-wrap:wrap;justify-content:center}
-.links a{color:var(--muted);text-decoration:none;padding:6px 10px}
-.links a:hover{color:var(--copper)}
-.links span{opacity:.4}
-footer{padding:20px 0 26px;text-align:center;color:#5d584c;font-size:12px}
-footer .rule{width:120px;height:1px;background:var(--line);margin:0 auto 12px}
+.result a{color:var(--copper);font-weight:800}
+.scroll-hint{margin-top:26px;color:var(--muted);font-size:13px;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+/* ===== sections ===== */
+section.block{padding:56px 0;border-top:1px solid rgba(201,151,63,.14)}
+.sec-kicker{color:var(--copper);font-size:13px;margin-bottom:8px}
+.sec-title{font-family:'Aref Ruqaa',serif;font-size:clamp(26px,4.5vw,38px);margin-bottom:6px}
+.sec-sub{color:var(--muted);font-size:15px;line-height:2;max-width:640px}
+/* entry cards */
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:26px}
+.card3{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:26px 18px;text-align:center;cursor:pointer;transition:.2s}
+.card3:hover{border-color:var(--copper);transform:translateY(-4px)}
+.card3 .ico{font-size:40px}
+.card3 h3{margin-top:10px;font-size:17px}
+.card3 p{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.9}
+.center-line{text-align:center;margin-top:20px;color:var(--muted)}
+/* featured journey */
+.journey{margin-top:26px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.journey img{width:100%;display:block;max-height:420px;object-fit:cover}
+.journey .body{padding:24px 22px}
+.journey h3{font-family:'Aref Ruqaa',serif;font-size:28px}
+.journey h3 span{color:var(--copper)}
+.j-mini{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 6px}
+.j-mini b{cursor:pointer;font-size:12px;color:var(--muted);padding:6px 10px;border:1px solid var(--line);border-radius:999px}
+.j-mini b.on,.j-mini b:hover{color:#1a1408;background:var(--copper);border-color:var(--copper)}
+.j-era{font-size:14px;color:#cfc5ab;line-height:2;min-height:56px;margin-bottom:14px}
+/* philosophy path */
+.path{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:0}
+.path .node{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:999px;padding:10px 34px;font-size:16px;font-weight:700}
+.path .node.first{border-color:var(--copper);color:var(--copper)}
+.path .arrow{color:var(--copper);font-size:20px;line-height:1.6}
+/* layers table */
+.layers10{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.layer{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:16px 12px;text-align:center}
+.layer .ico{font-size:30px}
+.layer h3{font-size:14px;margin-top:8px}
+.layer p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.9}
+/* causal chain */
+.chain{margin-top:26px;max-width:560px}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step .dot{width:34px;height:34px;flex-shrink:0;border-radius:50%;background:rgba(201,151,63,.12);border:1px solid var(--copper);display:grid;place-items:center;font-size:16px}
+.step .txt{padding-bottom:6px}
+.step .txt b{display:block;font-size:15px}
+.step .txt span{font-size:13px;color:var(--muted);line-height:1.9}
+.step .vline{width:34px;display:flex;justify-content:center;color:var(--copper);font-size:18px;line-height:1.2}
+/* hotspots */
+.photo-wrap{position:relative;margin-top:26px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.photo-wrap img{width:100%;display:block}
+.hot{position:absolute;width:30px;height:30px;border-radius:50%;background:rgba(201,151,63,.9);border:3px solid #fff3;cursor:pointer;display:grid;place-items:center;color:#1a1408;font-weight:800;font-size:15px;box-shadow:0 0 0 6px rgba(201,151,63,.25);transition:.2s}
+.hot.on{background:#fff}
+.hot-info{margin-top:12px;background:rgba(15,18,15,.88);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:14px;line-height:2;min-height:60px}
+.hot-info b{color:var(--copper)}
+/* past vs present */
+.compare{position:relative;margin-top:26px;border-radius:18px;overflow:hidden;border:1px solid var(--line);user-select:none}
+.compare img{display:block;width:100%}
+.compare .past{position:absolute;inset:0;overflow:hidden}
+.compare .past img{width:100%;height:100%;object-fit:cover;filter:sepia(.85) contrast(.95) brightness(.85)}
+.compare .base{filter:none}
+.compare .divider{position:absolute;top:0;bottom:0;width:3px;background:var(--copper);cursor:ew-resize}
+.compare .tag{position:absolute;top:12px;font-size:12px;font-weight:800;background:rgba(0,0,0,.6);padding:4px 14px;border-radius:999px;border:1px solid var(--line)}
+.compare input{position:absolute;bottom:12px;right:12px;left:12px;width:calc(100% - 24px);accent-color:var(--copper)}
+.compare-note{margin-top:10px;font-size:12px;color:var(--muted)}
+.compare-list{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.compare-list div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px;text-align:center;color:var(--muted)}
+/* archive */
+.arch{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.arch div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:20px 10px;text-align:center}
+.arch .ico{font-size:32px}
+.arch b{display:block;margin-top:8px;font-size:14px}
+.arch span{font-size:12px;color:var(--muted)}
+/* cta */
+.cta-box{margin-top:26px;text-align:center;background:rgba(201,151,63,.06);border:1px solid var(--line);border-radius:20px;padding:36px 22px}
+.cta-box h3{font-family:'Aref Ruqaa',serif;font-size:26px;margin-bottom:8px}
+.cta-box p{color:var(--muted);line-height:2;margin-bottom:18px}
+.badges{margin-top:22px;font-size:12px;color:var(--muted);line-height:2.4}
+footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border-top:1px solid rgba(201,151,63,.14)}
 @media(max-width:640px){
   nav.top{display:none}
   .search{flex-direction:column}
-  .btn{width:100%}
-  header{justify-content:center}
+  .search .btn{width:100%}
+  section.block{padding:40px 0}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="brand">
-      <svg viewBox="0 0 48 48" fill="none" stroke="#c9973f" stroke-width="2.5">
-        <circle cx="24" cy="24" r="20"/>
-        <circle cx="24" cy="24" r="13" opacity=".4"/>
+
+  <header class="top">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#c9973f" stroke-width="2.5" width="30" height="30">
+        <circle cx="24" cy="24" r="20"/><circle cx="24" cy="24" r="13" opacity=".4"/>
         <path d="M24 11 L28 24 L24 37 L20 24 Z" fill="#c9973f" stroke="none"/>
         <circle cx="24" cy="24" r="2.5" fill="#c9973f" stroke="none"/>
       </svg>
       السفر عبر المكان
-    </div>
+    </a>
     <nav class="top">
-      <a href="#" onclick="soon();return false">استكشف</a>
-      <a href="#" onclick="soon();return false">الأرشيف</a>
-      <a href="#" onclick="soon();return false">أضف قصة</a>
-      <a href="#" onclick="soon();return false">عن المشروع</a>
+      <a href="/">الرئيسية</a>
+      <a href="#journey">استكشف</a>
+      <a href="#timeline">خريطة الزمن</a>
+      <a href="#people">قصص الناس</a>
+      <a href="#archive">الأرشيف</a>
+      <a href="#add">أضف قصة</a>
     </nav>
   </header>
 
-  <main>
-    <div class="kicker">موسوعة زمنية تفاعلية لكل مكان</div>
+  <!-- 1. HERO -->
+  <div class="hero">
+    <div class="kicker">بوابة الزمن — موسوعة تفاعلية لكل مكان</div>
     <h1>السفر عبر المكان</h1>
-    <p class="tagline">كل مكان يحمل حكاية...<br/>وكل حكاية تقود إلى تاريخ.</p>
-    <p class="slogan">«لا تقرأ التاريخ... ادخل إليه.»</p>
-
+    <p class="tagline">لا تقرأ التاريخ... ادخل إليه.<br/>كل مكان يحمل حكاية، وكل حكاية تقود إلى تاريخ.</p>
     <div class="search">
-      <input id="q" placeholder="اكتب اسم المكان الذي تريد السفر إليه... مثال: الجيزة، درعا" onkeydown="if(event.key==='Enter')startJourney()" />
+      <input id="q" placeholder="إلى أي مكان تريد أن تسافر؟ مثال: الجيزة، درعا" onkeydown="if(event.key==='Enter')startJourney()" />
       <button class="btn btn-gold" onclick="startJourney()">ابدأ الرحلة</button>
     </div>
-    <button class="btn btn-ghost" onclick="discover()">اكتشف مكانًا</button>
-    <div class="hint">رحلتان تجريبيتان: <a href="/place.html?p=jeeza" style="color:#c9973f">الجيزة 1950</a> — <a href="/place.html?p=bosra" style="color:#c9973f">بصرى الشام</a></div>
-
     <div class="result" id="result"></div>
+    <div class="scroll-hint">مرر للأسفل لتبدأ السفر ↓</div>
+  </div>
 
-    <div class="links">
-      <a href="#" onclick="soon();return false">استكشف الأماكن</a><span>|</span>
-      <a href="#" onclick="soon();return false">أضف قصة</a><span>|</span>
-      <a href="#" onclick="soon();return false">الأرشيف</a>
+  <!-- 2. ENTRY POINTS -->
+  <section class="block" id="start">
+    <div class="sec-kicker">نقطة البداية</div>
+    <h2 class="sec-title">اختر من أين تبدأ</h2>
+    <div class="cards3">
+      <div class="card3" onclick="goPlace('jeeza')"><div class="ico">📍</div><h3>مكان</h3><p>اختر قرية، مدينة، حيًا أو شارعًا.</p></div>
+      <div class="card3" onclick="goPlace('jeeza')"><div class="ico">🕰</div><h3>زمن</h3><p>اختر السنة التي تريد أن تراها.</p></div>
+      <div class="card3" onclick="document.getElementById('add').scrollIntoView({behavior:'smooth'})"><div class="ico">👨‍👩‍👧</div><h3>قصة</h3><p>ابدأ من عائلة أو بيت أو ذكرى.</p></div>
     </div>
-  </main>
+    <p class="center-line">يمكنك أن تبدأ من أي شيء... وسنأخذك إلى ما حوله.</p>
+  </section>
 
-  <footer>
-    <div class="rule"></div>
-    السفر عبر المكان — نبدأ بالإنسان لنكتشف تاريخ المنطقة
-  </footer>
+  <!-- 3. FEATURED JOURNEY -->
+  <section class="block" id="journey">
+    <div class="sec-kicker">جرّب السفر الآن</div>
+    <h2 class="sec-title">الجيزة — درعا: رحلة حقيقية</h2>
+    <p class="sec-sub">ليست بطاقة تعريفية، بل رحلة تعمل فعلًا: صورة المكان، خط زمني، ثم ادخل إلى السنة.</p>
+    <div class="journey">
+      <img src="/jeeza-home.jpg" alt="الجيزة" />
+      <div class="body">
+        <h3>الجيزة — <span id="jYear">1950</span></h3>
+        <div class="j-mini" id="jMini"></div>
+        <p class="j-era" id="jEra"></p>
+        <a class="btn btn-gold" href="/place.html?p=jeeza">ادخل إلى 1950 ←</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PHILOSOPHY -->
+  <section class="block" id="people">
+    <div class="sec-kicker">هوية المشروع</div>
+    <h2 class="sec-title">من الإنسان إلى التاريخ</h2>
+    <p class="sec-sub">لا نبدأ بتاريخ المنطقة لنصل إلى الإنسان؛ بل نبدأ بالإنسان لنكتشف تاريخ المنطقة.</p>
+    <div class="path">
+      <div class="node first">👨‍👩‍👧 عائلة</div><div class="arrow">↓</div>
+      <div class="node">🏠 بيت</div><div class="arrow">↓</div>
+      <div class="node">زقاق</div><div class="arrow">↓</div>
+      <div class="node">قرية</div><div class="arrow">↓</div>
+      <div class="node">منطقة</div><div class="arrow">↓</div>
+      <div class="node">📜 تاريخ</div>
+    </div>
+    <p class="center-line">ابدأ من قصة إنسان... واكتشف العالم الذي عاش فيه.</p>
+  </section>
+
+  <!-- 5. LAYERS -->
+  <section class="block" id="layers">
+    <div class="sec-kicker">ماذا كان يحدث هنا؟</div>
+    <h2 class="sec-title">طبقات المكان</h2>
+    <p class="sec-sub">التاريخ ليس نصًا واحدًا — عشر طبقات تُفتح على الجيزة 1950:</p>
+    <div class="layers10" id="layers10"></div>
+    <p class="center-line"><a class="btn btn-ghost" href="/place.html?p=jeeza">افتح الطبقات كاملة ←</a></p>
+  </section>
+
+  <!-- 6. WHY CHANGED -->
+  <section class="block" id="why">
+    <div class="sec-kicker">الفهم العميق</div>
+    <h2 class="sec-title">لماذا تغيّر المكان؟</h2>
+    <p class="sec-sub">الجيزة 1950 ← الجيزة 2026: لا نقول ماذا حدث فقط، بل لماذا حدث.</p>
+    <div class="chain" id="chain"></div>
+  </section>
+
+  <!-- 7. BEYOND PHOTO -->
+  <section class="block" id="photo">
+    <div class="sec-kicker">الصورة بوابة</div>
+    <h2 class="sec-title">الصورة تحكي أكثر</h2>
+    <p class="sec-sub">اضغط على النقاط الذهبية في الصورة واكتشف ما وراءها:</p>
+    <div class="photo-wrap">
+      <img src="/jeeza-home.jpg" alt="الجيزة — المسجد والوادي" />
+      <div class="hot" style="top:16%;right:38%" onclick="hot(0,this)">+</div>
+      <div class="hot" style="top:62%;right:44%" onclick="hot(1,this)">+</div>
+      <div class="hot" style="top:40%;right:16%" onclick="hot(2,this)">+</div>
+      <div class="hot" style="top:74%;right:20%" onclick="hot(3,this)">+</div>
+    </div>
+    <div class="hot-info" id="hotInfo">اضغط على أي نقطة ذهبية...</div>
+  </section>
+
+  <!-- 8. PAST × PRESENT -->
+  <section class="block" id="compare">
+    <div class="sec-kicker">التحول</div>
+    <h2 class="sec-title">الماضي × الحاضر</h2>
+    <p class="sec-sub">اسحب الخط الفاصل: الجيزة 1950 ← الجيزة 2026.</p>
+    <div class="compare" id="compareBox">
+      <img class="base" src="/jeeza-home.jpg" alt="الحاضر" />
+      <div class="past" id="pastLayer" style="width:50%">
+        <img src="/jeeza-home.jpg" alt="الماضي" id="pastImg" />
+      </div>
+      <div class="divider" id="divider" style="right:50%"></div>
+      <span class="tag" style="right:12px">2026</span>
+      <span class="tag" style="left:12px">1950</span>
+      <input type="range" min="0" max="100" value="50" oninput="slideCompare(this.value)" />
+    </div>
+    <p class="compare-note">عرض توضيحي بنفس الصورة (أرشيف 1950 الحقيقي يُجمع الآن).</p>
+    <div class="compare-list">
+      <div>🏠 البيوت</div><div>🛣 الطرق</div><div>👥 السكان</div>
+      <div>🌾 الزراعة</div><div>🔨 المهن</div><div>🛒 الأسواق</div><div>🎭 العادات</div>
+    </div>
+  </section>
+
+  <!-- 9. ARCHIVE -->
+  <section class="block" id="archive">
+    <div class="sec-kicker">غرفة الأرشيف</div>
+    <h2 class="sec-title">الأرشيف</h2>
+    <p class="sec-sub">كل مادة تحمل مصدرها وهويتها:</p>
+    <div class="arch">
+      <div><div class="ico">📷</div><b>الصور</b><span>تُجمع الآن</span></div>
+      <div><div class="ico">📜</div><b>الوثائق</b><span>تُجمع الآن</span></div>
+      <div><div class="ico">🗺</div><b>الخرائط</b><span>تُجمع الآن</span></div>
+      <div><div class="ico">🪙</div><b>العملات</b><span>تُجمع الآن</span></div>
+      <div><div class="ico">🎙</div><b>التسجيلات</b><span>تُجمع الآن</span></div>
+      <div><div class="ico">👴</div><b>الشهادات</b><span>تُجمع الآن</span></div>
+    </div>
+    <p class="center-line">🟢 وثيقة &nbsp; 🔵 صورة &nbsp; 🟡 رواية محلية &nbsp; 🟠 استنتاج &nbsp; 🔴 إعادة بناء AI</p>
+  </section>
+
+  <!-- 10. ADD MEMORY -->
+  <section class="block" id="add">
+    <div class="cta-box">
+      <h3>أضف جزءًا من ذاكرتك</h3>
+      <p>هل تملك صورة قديمة؟ حكاية سمعتها من جدك؟ وثيقة؟ تسجيل؟ اسم مكان قديم؟<br/>ربما تكون ذكراك الصغيرة جزءًا من تاريخ أكبر.</p>
+      <button class="btn btn-gold" onclick="soon()">أضف قصة إلى المكان</button>
+      <div class="badges">المساهمة مجانية دائمًا — الذاكرة ليست للبيع</div>
+    </div>
+  </section>
+
+  <footer>السفر عبر المكان — نبدأ بالإنسان لنكتشف تاريخ المنطقة</footer>
 </div>
 
 <script>
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }
+var J_YEARS = [1800, 1850, 1900, 1950, 1970, 2000, 2026];
+var J_ERAS = {
+  1800: 'قرية حورانية على القمح والقوافل.',
+  1850: 'حياة قروية مستقرة حول الفلاحة والماشية.',
+  1900: 'قرية في قضاء حوران أواخر العهد العثماني.',
+  1950: 'كيف كان المكان؟ من عاش هنا؟ ماذا أكلوا؟ كيف تنقلوا؟ أين السوق؟ — الرحلة الكاملة بانتظارك.',
+  1970: 'مدارس وطرق جديدة وتعليم يتوسع.',
+  2000: 'خدمات بلدية ونمو سكاني متسارع.',
+  2026: 'بلدية رقمية ومشاريع معلنة.'
+};
+var J_CUR = 3;
+function renderJMini(){
+  document.getElementById('jMini').innerHTML = J_YEARS.map(function(y,i){
+    return '<b class="'+(i===J_CUR?'on':'')+'" onclick="setJYear('+i+')">'+y+'</b>';
+  }).join('');
+  document.getElementById('jYear').textContent = J_YEARS[J_CUR];
+  document.getElementById('jEra').textContent = J_ERAS[J_YEARS[J_CUR]];
+}
+function setJYear(i){ J_CUR = i; renderJMini(); }
+var LAYERS10 = [
+  {i:'👥',t:'الناس',d:'العائلات والسكان'},
+  {i:'🏠',t:'المكان',d:'البيوت والطرق'},
+  {i:'👕',t:'الحياة',d:'الملابس والعادات'},
+  {i:'🍞',t:'الطعام',d:'الأطعمة والمطابخ'},
+  {i:'💰',t:'الاقتصاد',d:'العمل والعملة والأسعار'},
+  {i:'🐎',t:'التجارة',d:'الأسواق والقوافل'},
+  {i:'🌾',t:'الأرض',d:'الزراعة والمحاصيل'},
+  {i:'⚔️',t:'الأحداث',d:'الحروب والهجرات والكوارث'},
+  {i:'🕌',t:'الثقافة',d:'الدين والعادات والعمارة'},
+  {i:'🗣',t:'اللغة',d:'اللهجة والكلمات المحلية'}
+];
+document.getElementById('layers10').innerHTML = LAYERS10.map(function(l){
+  return '<div class="layer"><div class="ico">'+l.i+'</div><h3>'+l.t+'</h3><p>'+l.d+'</p></div>';
+}).join('');
+var CHAIN = [
+  {i:'🏛',t:'حدث تاريخي',d:'الاستقلال وتشكل الدولة والإدارة المحلية'},
+  {i:'📚',t:'تغير اجتماعي',d:'انتشار التعليم والمدارس في الريف'},
+  {i:'💡',t:'بنية تحتية',d:'كهرباء ومياه وطرق واتصالات'},
+  {i:'🏗',t:'تغير العمران',d:'من الحجر والطين إلى البناء الحديث'},
+  {i:'🔨',t:'تغير العمل',d:'من الفلاحة فقط إلى مهن ووظائف متنوعة'},
+  {i:'📱',t:'نمط الحياة',d:'بلدية رقمية وخدمات إلكترونية 2026'}
+];
+document.getElementById('chain').innerHTML = CHAIN.map(function(s,i){
+  return '<div class="step"><div class="dot">'+s.i+'</div><div class="txt"><b>'+s.t+'</b><span>'+s.d+'</span></div></div>' +
+    (i < CHAIN.length - 1 ? '<div class="vline">↓</div>' : '');
+}).join('');
+var HOTS = [
+  '<b>المئذنة:</b> 🟡 مآذن حوران الحجرية — كانت الأذان والوقت يضبطان إيقاع القرية.',
+  '<b>الشارع والسوق:</b> 🟡 الطريق إلى السوق الأسبوعي حيث القمح والماشية والأقمشة.',
+  '<b>وادي الزيدي:</b> 🟢 شريان الماء والزراعة — طرق ومنشآت مائية قديمة على ضفافه.',
+  '<b>الزيتون:</b> 🟡 كروم الزيتون غذاء وزيت وتجارة — وما تزال حتى اليوم.'
+];
+function hot(i, el){
+  document.querySelectorAll('.hot').forEach(function(h){ h.classList.remove('on'); });
+  el.classList.add('on');
+  document.getElementById('hotInfo').innerHTML = HOTS[i];
+}
+function slideCompare(v){
+  document.getElementById('pastLayer').style.width = v + '%';
+  document.getElementById('divider').style.right = v + '%';
+  var img = document.getElementById('pastImg');
+  img.style.width = document.getElementById('compareBox').offsetWidth + 'px';
+}
+window.addEventListener('resize', function(){
+  var v = document.querySelector('.compare input').value;
+  document.getElementById('pastImg').style.width = document.getElementById('compareBox').offsetWidth + 'px';
+});
+function goPlace(p){ location.href = '/place.html?p=' + p; }
 function startJourney(){
   var q = (document.getElementById('q').value || '').trim();
   var box = document.getElementById('result');
   box.classList.add('show');
-  if(!q){
-    box.innerHTML = 'اكتب اسم المكان أولاً... مثال: <b>الجيزة، درعا</b>';
-    return;
-  }
+  if(!q){ box.innerHTML = 'اكتب اسم المكان أولاً... مثال: <b>الجيزة، درعا</b>'; return; }
   if(q.indexOf('جيزة') !== -1 || q.indexOf('جيز') !== -1){
-    box.innerHTML = '<b>الجيزة — ريف درعا</b><br/>أول رحلة تجريبية: <b>سنة 1950</b> — المكان، العائلة، العملة، التجارة، الأحداث...<br/><a href="/place.html?p=jeeza" style="color:#c9973f;font-weight:800">افتح صفحة الجيزة ←</a>';
+    box.innerHTML = '<b>الجيزة — ريف درعا</b><br/>أول رحلة تجريبية: <b>سنة 1950</b><br/><a href="/place.html?p=jeeza">افتح صفحة الجيزة ←</a>';
   } else if(q.indexOf('بصر') !== -1){
-    box.innerHTML = '<b>بصرى الشام — مدينة التاريخ المفتوح</b><br/>المسرح الروماني، القلعة الأيوبية، 20 قرنًا من الطبقات...<br/><a href="/place.html?p=bosra" style="color:#c9973f;font-weight:800">افتح صفحة بصرى ←</a>';
+    box.innerHTML = '<b>بصرى الشام — مدينة التاريخ المفتوح</b><br/><a href="/place.html?p=bosra">افتح صفحة بصرى ←</a>';
   } else {
-    box.innerHTML = 'المكان: <b>' + q.replace(/</g,'&lt;') + '</b><br/>سيُضاف قريبًا — يمكنك أن تكون أول من يضيف قصة عنه.';
+    box.innerHTML = 'المكان: <b>' + q.replace(/</g,'&lt;') + '</b><br/>سيُضاف قريبًا — <a href="#add">كن أول من يضيف قصة عنه</a>.';
   }
 }
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = 'أماكن مقترحة للبداية: <b><a href="/place.html?p=jeeza" style="color:#c9973f">الجيزة</a></b> — <b><a href="/place.html?p=bosra" style="color:#c9973f">بصرى الشام</a></b>...<br/>أو اكتب اسم مكانك في البحث وابدأ الرحلة.';
+  box.innerHTML = 'رحلتان جاهزتان: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b>';
 }
 function soon(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = 'هذا القسم قيد البناء — نبدأ بالرحلة الأولى: <b>الجيزة 1950</b>.';
+  box.innerHTML = 'هذا القسم قيد البناء — ابدأ بالرحلة الجاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b>.';
 }
+renderJMini();
+slideCompare(50);
 </script>
 </body>
 </html>

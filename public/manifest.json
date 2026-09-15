@@ -1,0 +1,17 @@
+{
+  "name": "السفر عبر المكان",
+  "short_name": "السفر",
+  "description": "لا تقرأ التاريخ... ادخل إليه — موسوعة زمنية تفاعلية لكل مكان",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "dir": "rtl",
+  "lang": "ar",
+  "background_color": "#0b0e0c",
+  "theme_color": "#0b0e0c",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

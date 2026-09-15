@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title id="docTitle">المكان — السفر عبر المكان</title>
 <meta name="description" content="سافر عبر الزمن واكتشف تاريخ المكان" />
+<link rel="icon" type="image/png" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#0b0e0c" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="السفر عبر المكان" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
@@ -108,6 +116,7 @@ footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
 </div>
 
 <script>
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }
 var PLACES = {
 jeeza: {
   name: 'الجيزة', region: 'ريف درعا — سوريا',
