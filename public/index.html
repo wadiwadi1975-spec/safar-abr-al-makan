@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>السفر عبر المكان — لا تقرأ التاريخ... ادخل إليه</title>
+<meta name="description" content="السفر عبر المكان — موسوعة زمنية تفاعلية لكل مكان: ابدأ من الإنسان لاكتشاف تاريخ المنطقة" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#0b0e0c;
+  --ink2:#111512;
+  --copper:#c9973f;
+  --copper2:#a87b2c;
+  --parchment:#e9ddc2;
+  --muted:#9a917c;
+  --line:rgba(201,151,63,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--parchment);min-height:100vh;
+  background:
+    radial-gradient(1200px 700px at 50% 30%,rgba(201,151,63,.10),transparent 60%),
+    radial-gradient(closest-side at 50% 50%,transparent 40%,rgba(0,0,0,.55) 100%),
+    repeating-linear-gradient(0deg,rgba(201,151,63,.05) 0 1px,transparent 1px 90px),
+    repeating-linear-gradient(90deg,rgba(201,151,63,.05) 0 1px,transparent 1px 90px),
+    linear-gradient(180deg,#0d100e,#080a09);
+  display:flex;flex-direction:column;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.6) 100%);
+}
+.wrap{position:relative;z-index:1;width:100%;max-width:900px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;min-height:100vh}
+header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+.brand{display:flex;align-items:center;gap:10px;color:var(--parchment);font-weight:800;font-size:17px}
+.brand svg{width:34px;height:34px}
+nav.top{display:flex;gap:22px}
+nav.top a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
+nav.top a:hover{color:var(--copper)}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 0 20px}
+.kicker{color:var(--copper);font-size:13px;letter-spacing:1px;margin-bottom:14px;border:1px solid var(--line);padding:6px 18px;border-radius:999px}
+h1{font-family:'Aref Ruqaa',serif;font-size:clamp(44px,8vw,84px);font-weight:700;line-height:1.25;color:var(--parchment);text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.tagline{margin-top:10px;font-size:clamp(15px,2.6vw,21px);font-weight:300;color:var(--muted);line-height:2}
+.slogan{margin-top:18px;font-family:'Aref Ruqaa',serif;font-size:clamp(18px,3.4vw,26px);color:var(--copper)}
+.search{margin-top:30px;width:100%;max-width:560px;display:flex;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:8px;backdrop-filter:blur(4px)}
+.search input{flex:1;background:transparent;border:none;outline:none;color:var(--parchment);font-family:inherit;font-size:16px;padding:10px 14px}
+.search input::placeholder{color:#6f695b}
+.btn{border:none;border-radius:10px;font-family:inherit;font-weight:800;font-size:15px;padding:13px 28px;cursor:pointer;transition:.2s}
+.btn-gold{background:linear-gradient(180deg,#d9ab4e,#b38530);color:#1a1408;box-shadow:0 6px 24px rgba(201,151,63,.25)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,151,63,.35)}
+.btn-ghost{background:transparent;color:var(--parchment);border:1px solid var(--line);margin-top:12px}
+.btn-ghost:hover{border-color:var(--copper);color:var(--copper)}
+.hint{margin-top:10px;font-size:12px;color:#6f695b}
+.result{margin-top:18px;width:100%;max-width:560px;display:none;background:rgba(20,24,20,.85);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:right;line-height:2;font-size:15px}
+.result.show{display:block;animation:fade .4s}
+.result b{color:var(--copper)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.links{margin-top:26px;display:flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;flex-wrap:wrap;justify-content:center}
+.links a{color:var(--muted);text-decoration:none;padding:6px 10px}
+.links a:hover{color:var(--copper)}
+.links span{opacity:.4}
+footer{padding:20px 0 26px;text-align:center;color:#5d584c;font-size:12px}
+footer .rule{width:120px;height:1px;background:var(--line);margin:0 auto 12px}
+@media(max-width:640px){
+  nav.top{display:none}
+  .search{flex-direction:column}
+  .btn{width:100%}
+  header{justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#c9973f" stroke-width="2.5">
+        <circle cx="24" cy="24" r="20"/>
+        <circle cx="24" cy="24" r="13" opacity=".4"/>
+        <path d="M24 11 L28 24 L24 37 L20 24 Z" fill="#c9973f" stroke="none"/>
+        <circle cx="24" cy="24" r="2.5" fill="#c9973f" stroke="none"/>
+      </svg>
+      السفر عبر المكان
+    </div>
+    <nav class="top">
+      <a href="#" onclick="soon();return false">استكشف</a>
+      <a href="#" onclick="soon();return false">الأرشيف</a>
+      <a href="#" onclick="soon();return false">أضف قصة</a>
+      <a href="#" onclick="soon();return false">عن المشروع</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="kicker">موسوعة زمنية تفاعلية لكل مكان</div>
+    <h1>السفر عبر المكان</h1>
+    <p class="tagline">كل مكان يحمل حكاية...<br/>وكل حكاية تقود إلى تاريخ.</p>
+    <p class="slogan">«لا تقرأ التاريخ... ادخل إليه.»</p>
+
+    <div class="search">
+      <input id="q" placeholder="اكتب اسم المكان الذي تريد السفر إليه... مثال: الجيزة، درعا" onkeydown="if(event.key==='Enter')startJourney()" />
+      <button class="btn btn-gold" onclick="startJourney()">ابدأ الرحلة</button>
+    </div>
+    <button class="btn btn-ghost" onclick="discover()">اكتشف مكانًا</button>
+    <div class="hint">أول رحلة تجريبية: الجيزة — ريف درعا — سنة 1950 (قريبًا)</div>
+
+    <div class="result" id="result"></div>
+
+    <div class="links">
+      <a href="#" onclick="soon();return false">استكشف الأماكن</a><span>|</span>
+      <a href="#" onclick="soon();return false">أضف قصة</a><span>|</span>
+      <a href="#" onclick="soon();return false">الأرشيف</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="rule"></div>
+    السفر عبر المكان — نبدأ بالإنسان لنكتشف تاريخ المنطقة
+  </footer>
+</div>
+
+<script>
+function startJourney(){
+  var q = (document.getElementById('q').value || '').trim();
+  var box = document.getElementById('result');
+  box.classList.add('show');
+  if(!q){
+    box.innerHTML = 'اكتب اسم المكان أولاً... مثال: <b>الجيزة، درعا</b>';
+    return;
+  }
+  if(q.indexOf('جيزة') !== -1 || q.indexOf('جيز') !== -1){
+    box.innerHTML = '<b>الجيزة — ريف درعا</b><br/>أول رحلة تجريبية: <b>سنة 1950</b> — المكان، العائلة، العملة، التجارة، الأحداث...<br/>الرحلة قيد الإعداد وستفتح قريبًا.';
+  } else {
+    box.innerHTML = 'المكان: <b>' + q.replace(/</g,'&lt;') + '</b><br/>سيُضاف قريبًا — يمكنك أن تكون أول من يضيف قصة عنه.';
+  }
+}
+function discover(){
+  var box = document.getElementById('result');
+  box.classList.add('show');
+  box.innerHTML = 'أماكن مقترحة للبداية: <b>الجيزة</b> — درعا — حوران...<br/>اكتب اسم مكانك في البحث وابدأ الرحلة.';
+}
+function soon(){
+  var box = document.getElementById('result');
+  box.classList.add('show');
+  box.innerHTML = 'هذا القسم قيد البناء — نبدأ بالرحلة الأولى: <b>الجيزة 1950</b>.';
+}
+</script>
+</body>
+</html>
