@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الجيزة — السفر عبر المكان</title>
+<meta name="description" content="الجيزة، ريف درعا — سافر عبر الزمن واكتشف تاريخ المكان" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#0b0e0c;--copper:#c9973f;--copper2:#a87b2c;
+  --parchment:#e9ddc2;--muted:#9a917c;--line:rgba(201,151,63,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--parchment);min-height:100vh;
+  background:
+    radial-gradient(1000px 600px at 50% 0%,rgba(201,151,63,.08),transparent 60%),
+    linear-gradient(180deg,#0d100e,#080a09);
+}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{color:var(--parchment);text-decoration:none;font-weight:800;font-size:16px}
+header nav{display:flex;gap:18px}
+header nav a{color:var(--muted);text-decoration:none;font-size:14px}
+header nav a:hover{color:var(--copper)}
+.hero{text-align:center;padding:10px 0 0}
+.hero h1{font-family:'Aref Ruqaa',serif;font-size:clamp(40px,7vw,68px)}
+.hero .region{color:var(--copper);font-size:17px;margin-top:4px}
+.hero img{width:100%;border-radius:18px;margin-top:20px;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero .before{margin-top:16px;color:var(--muted);font-size:16px}
+.timeline{margin-top:34px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:24px 22px}
+.timeline h2{font-size:20px;color:var(--copper);margin-bottom:4px}
+.timeline .year-big{font-family:'Aref Ruqaa',serif;font-size:52px;color:var(--parchment);margin:6px 0}
+.timeline .era{line-height:2;color:#cfc5ab;font-size:15px;min-height:90px}
+input[type=range]{width:100%;margin:18px 0 6px;accent-color:var(--copper)}
+.stops{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.stops b{cursor:pointer;padding:4px 6px;border-radius:6px}
+.stops b.on,.stops b:hover{color:var(--copper);background:rgba(201,151,63,.1)}
+.layers{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.layer{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;transition:.2s}
+.layer:hover{border-color:var(--copper);transform:translateY(-3px)}
+.layer .ico{font-size:30px}
+.layer h3{font-size:14px;margin-top:8px;color:var(--parchment)}
+.layer p{display:none;font-size:13px;color:#cfc5ab;line-height:2;margin-top:8px;text-align:right}
+.layer.open p{display:block}
+.layer.open{grid-column:1/-1;text-align:right}
+.layer.open .ico,.layer.open h3{text-align:center}
+.sources{margin-top:26px;border:1px dashed var(--line);border-radius:14px;padding:16px 18px;font-size:13px;color:var(--muted);line-height:2.2}
+.sources b{color:var(--copper)}
+.cta{margin:28px 0 10px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{border:none;border-radius:10px;font-family:inherit;font-weight:800;font-size:15px;padding:13px 28px;cursor:pointer}
+.btn-gold{background:linear-gradient(180deg,#d9ab4e,#b38530);color:#1a1408}
+.btn-ghost{background:transparent;color:var(--parchment);border:1px solid var(--line)}
+footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
+@media(max-width:640px){
+  header nav{display:none}
+  .timeline .year-big{font-size:42px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">🧭 السفر عبر المكان</a>
+    <nav>
+      <a href="/">الرئيسية</a>
+      <a href="#" onclick="soon();return false">خريطة المكان</a>
+      <a href="#" onclick="soon();return false">الأرشيف</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 id="pName">الجيزة</h1>
+    <div class="region" id="pRegion">ريف درعا — سوريا</div>
+    <img id="pImg" src="/jeeza-home.jpg" alt="الجيزة" />
+    <p class="before">قبل أن تصبح هذه الصورة... كان هنا تاريخ طويل. حرّك الزمن واكتشفه.</p>
+  </section>
+
+  <section class="timeline">
+    <h2>الخط الزمني</h2>
+    <div class="year-big" id="yearBig">1950</div>
+    <input type="range" id="timeRange" min="0" max="6" step="1" value="3" oninput="setYear(this.value)" />
+    <div class="stops" id="stops"></div>
+    <p class="era" id="eraText"></p>
+  </section>
+
+  <section>
+    <div class="layers" id="layers"></div>
+  </section>
+
+  <section class="sources">
+    <b>هوية المعلومة:</b><br/>
+    🟢 موثقة بوثيقة &nbsp; 🔵 مدعومة بصورة &nbsp; 🟡 رواية شفوية محلية &nbsp; 🟠 استنتاج مبني على مصادر &nbsp; 🔴 إعادة بناء بالذكاء الاصطناعي<br/>
+    لا توجد معلومة بلا مصدر أو درجة موثوقية.
+  </section>
+
+  <div class="cta">
+    <button class="btn btn-gold" onclick="soon()">اكتشف العالم الذي عاشوا فيه</button>
+    <button class="btn btn-ghost" onclick="soon()">قارن 1950 × 2026</button>
+  </div>
+
+  <footer>السفر عبر المكان — نبدأ بالإنسان لنكتشف تاريخ المنطقة</footer>
+</div>
+
+<script>
+var YEARS = [1800, 1850, 1900, 1950, 1970, 2000, 2026];
+var ERAS = {
+  1800: '🟡 قرية حورانية عريقة تعيش على الزراعة. بيوت حجرية من البازلت الأسود، وحقول قمح تمتد حتى الأفق، وقوافل تربطها بدرعا ودمشق.',
+  1850: '🟡 الحياة قروية مستقرة: الفلاحة وتربية الماشية أساس الرزق، والسوق الأسبوعي في المنطقة يجمع القرى المجاورة.',
+  1900: '🟠 أواخر العهد العثماني: الجيزة قرية في قضاء حوران. السجلات العثمانية (1596م) ذكرتها باسم Jiza ضمن ناحية بُثينة — والزراعة ما تزال قلب الحياة.',
+  1950: '🟢 الرحلة التجريبية: بعد استقلال سوريا، قرية نابضة — بيوت حجرية، عائلات فلاحية، الليرة السورية عملة التداول، قمح حوران وماشيته في الأسواق، والمسجد مركز الحياة. افتح الطبقات بالأسفل.',
+  1970: '🟠 توسع عمراني وتعليم: مدارس جديدة، طرق محسنة، وأبناء القرية بين الفلاحة والوظائف.',
+  2000: '🟠 الجيزة الحديثة: خدمات بلدية منظمة، كهرباء ومياه واتصالات، ونمو سكاني متسارع.',
+  2026: '🔵 اليوم: بلدية الجيزة تخدم الأهالي رقميًا — مشاريع طرق وإنارة، مناقصات معلنة، وخدمات إلكترونية.'
+};
+var LAYERS = [
+  {i:'🏠',t:'المكان',d:'🟡 بيوت حجرية بسقوف من جذوع الأشجار والطين، أزقة ضيقة، وآبار لجمع المياه.'},
+  {i:'👨‍👩‍👧',t:'الناس',d:'🟡 عائلات فلاحية ممتدة يسكنها الجد والأبناء — اسم عائلتك قد يكون هنا. أضف قصتك.'},
+  {i:'🍲',t:'الحياة',d:'🟡 خبز التنور، البرغل واللبن، والضيافة مقدسة لا تُرد.'},
+  {i:'👕',t:'المجتمع',d:'🟡 القمباز والحطة للرجال، والأثواب المطرزة للنساء في المناسبات.'},
+  {i:'💰',t:'الاقتصاد',d:'🟢 العملة: الليرة السورية. المهن: زراعة القمح والبقوليات وتربية الماشية، وتجارة عبر سوق درعا.'},
+  {i:'🌾',t:'الأرض',d:'🟢 سهول حوران الخصبة ووادي الزيدي — شريان الماء والزراعة.'},
+  {i:'⚔️',t:'الأحداث',d:'🟢 بعد الاستقلال (1946): دولة جديدة، إدارة محلية تتشكل، وانعكاسات الأحداث الإقليمية على الريف.'},
+  {i:'🕌',t:'الثقافة',d:'🟡 المسجد مركز الحياة اليومية والمناسبات، وكبار السن ذاكرة القرية.'},
+  {i:'🗣️',t:'اللغة',d:'🟡 اللهجة الحورانية بكلماتها الخاصة — سجّل كلمة يتذكرها أجدادك.'},
+  {i:'📜',t:'الوثائق',d:'🔵 صور وسجلات تُجمع الآن — هل تملك صورة قديمة للجيزة؟ شاركها.'}
+];
+var cur = 3;
+function renderStops(){
+  document.getElementById('stops').innerHTML = YEARS.map(function(y,i){
+    return '<b data-i="'+i+'" class="'+(i===cur?'on':'')+'" onclick="setYear('+i+')">'+y+'</b>';
+  }).join('');
+}
+function renderLayers(){
+  document.getElementById('layers').innerHTML = LAYERS.map(function(l,i){
+    return '<div class="layer" onclick="this.classList.toggle(\'open\')"><div class="ico">'+l.i+'</div><h3>'+l.t+'</h3><p>'+l.d+'</p></div>';
+  }).join('');
+}
+function setYear(i){
+  cur = +i;
+  document.getElementById('timeRange').value = cur;
+  document.getElementById('yearBig').textContent = YEARS[cur];
+  document.getElementById('eraText').textContent = ERAS[YEARS[cur]];
+  renderStops();
+}
+function soon(){ alert('هذا القسم قيد البناء — الرحلة الأولى: الجيزة 1950'); }
+renderStops(); renderLayers(); setYear(3);
+</script>
+</body>
+</html>
