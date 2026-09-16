@@ -112,7 +112,7 @@ footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
   <section id="gallerySec" style="display:none;margin-top:26px">
     <h2 style="font-size:20px;color:var(--copper);margin-bottom:4px">الأرشيف المصور — صور حقيقية 🔵</h2>
     <div class="gallery" id="gallery"></div>
-    <p style="font-size:12px;color:var(--muted);margin-top:10px">تصوير: مجلس بلدية الجيزة — اضغط أي صورة لتكبيرها</p>
+    <p id="gCredit" style="font-size:12px;color:var(--muted);margin-top:10px"></p>
   </section>
   <div id="lightbox" onclick="this.style.display='none'"><img id="lbImg" src="" alt="" /><div>اضغط للإغلاق ✕</div></div>
 
@@ -159,17 +159,18 @@ jeeza: {
     {i:'📜',t:'الوثائق',d:'🔵 صور وسجلات تُجمع الآن — هل تملك صورة قديمة للجيزة؟ شاركها.'}
   ],
   photos: [
-    {f:'1',c:'أطلال بازلتية واسعة'},
-    {f:'2',c:'ممر مقنطر داخل بناء حجري'},
-    {f:'3',c:'بناء بازلتي قديم'},
-    {f:'4',c:'جدران بازلتية'},
-    {f:'5',c:'واجهة بناء حجري'},
-    {f:'6',c:'قنطرة حجرية'},
-    {f:'7',c:'ركام بازلتي وأقواس'},
-    {f:'8',c:'زاوية بناء أثري'},
-    {f:'10',c:'غرفة مقببة من الداخل'},
-    {f:'11',c:'إطلالة عبر مدخل حجري'}
-  ]
+    {s:'/jz/1.jpg',c:'أطلال بازلتية واسعة'},
+    {s:'/jz/2.jpg',c:'ممر مقنطر داخل بناء حجري'},
+    {s:'/jz/3.jpg',c:'بناء بازلتي قديم'},
+    {s:'/jz/4.jpg',c:'جدران بازلتية'},
+    {s:'/jz/5.jpg',c:'واجهة بناء حجري'},
+    {s:'/jz/6.jpg',c:'قنطرة حجرية'},
+    {s:'/jz/7.jpg',c:'ركام بازلتي وأقواس'},
+    {s:'/jz/8.jpg',c:'زاوية بناء أثري'},
+    {s:'/jz/10.jpg',c:'غرفة مقببة من الداخل'},
+    {s:'/jz/11.jpg',c:'إطلالة عبر مدخل حجري'}
+  ],
+  gcredit: 'تصوير: مجلس بلدية الجيزة — اضغط أي صورة لتكبيرها'
 },
 bosra: {
   name: 'بصرى الشام', region: 'ريف درعا — سوريا (تراث عالمي)',
@@ -224,7 +225,15 @@ palmyra: {
     {i:'🕌',t:'الثقافة',d:'🟢 معابد بل وبعل شمين واللات، كنائس بيزنطية، ثم جامع — ومسرح ما يزال شاهدًا على هندسة الصوت.'},
     {i:'🗣️',t:'اللغة',d:'🟢 الآرامية التدمرية لغة التجارة والعقود، واليونانية للمراسلات الرسمية.'},
     {i:'📜',t:'الوثائق',d:'🔵 نقوش الأعمدة التكريمية، نص التعريفة الجمركية، وصور أرشيفية موثقة.'}
-  ]
+  ],
+  photos: [
+    {s:'https://upload.wikimedia.org/wikipedia/commons/3/33/Palmyra_theater02%28js%29.jpg',c:'المسرح الروماني — أنقى صورة موثقة'},
+    {s:'https://upload.wikimedia.org/wikipedia/commons/4/4d/Temple_of_Bel%2C_Palmyra%2C_Syria_-_1.jpg',c:'معبد بل (32م)'},
+    {s:'https://upload.wikimedia.org/wikipedia/commons/e/ec/Temple_of_Bel%2C_Palmyra%2C_Syria_-_2.jpg',c:'معبد بل — الواجهة'},
+    {s:'https://upload.wikimedia.org/wikipedia/commons/e/ee/Temple_of_Bel%2C_Palmyra%2C_Syria_-_3.jpg',c:'معبد بل — تفاصيل الأعمدة'},
+    {s:'https://upload.wikimedia.org/wikipedia/commons/0/0d/Limestone_funerary_bust_of_Aqmat%2C_from_Palmyra%2C_Syria%2C_late_2nd_century_AD%2C_British_Museum_%2818177065006%29.jpg',c:'تمثال أقمت الجنائزي — المتحف البريطاني (القرن 2م)'}
+  ],
+  gcredit: 'صور: ويكيميديا كومنز (رخص حرة) — اضغط أي صورة لتكبيرها'
 }
 };
 var P = (function(){
@@ -262,9 +271,9 @@ function renderGallery(){
   var sec = document.getElementById('gallerySec');
   if (P.photos && P.photos.length) {
     sec.style.display = 'block';
+    document.getElementById('gCredit').textContent = P.gcredit || '';
     document.getElementById('gallery').innerHTML = P.photos.map(function(p){
-      var src = '/jz/' + p.f + '.jpg';
-      return '<figure onclick="openLb(\'' + src + '\')"><img loading="lazy" src="' + src + '" alt="' + p.c + '" /><figcaption>' + p.c + '</figcaption></figure>';
+      return '<figure onclick="openLb(\'' + p.s + '\')"><img loading="lazy" src="' + p.s + '" alt="' + p.c + '" /><figcaption>' + p.c + '</figcaption></figure>';
     }).join('');
   } else { sec.style.display = 'none'; }
 }
