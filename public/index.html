@@ -395,6 +395,8 @@ function startJourney(){
     box.innerHTML = '<b>بصرى الشام — مدينة التاريخ المفتوح</b><br/><a href="/place.html?p=bosra">افتح صفحة بصرى ←</a>';
   } else if(q.indexOf('تدمر') !== -1 || q.indexOf('بالميرا') !== -1 || q.indexOf('زنوبيا') !== -1){
     box.innerHTML = '<b>تدمر — عروس البادية</b><br/>مملكة زنوبيا، الشارع المستقيم، معبد بل...<br/><a href="/place.html?p=palmyra">افتح صفحة تدمر ←</a>';
+  } else if(q.indexOf('قلعة') !== -1 || q.indexOf('دمشق') !== -1){
+    box.innerHTML = '<b>قلعة دمشق — حامية المدينة</b><br/>العادل الأيوبي، 12 برجًا، 8 قرون من الحصار...<br/><a href="/place.html?p=citadel">افتح صفحة القلعة ←</a>';
   } else {
     box.innerHTML = 'المكان: <b>' + q.replace(/</g,'&lt;') + '</b><br/>سيُضاف قريبًا — <a href="#add">كن أول من يضيف قصة عنه</a>.';
   }
@@ -402,7 +404,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = '3 رحلات جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b>';
+  box.innerHTML = '4 رحلات جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b>';
 }
 function soon(){
   var box = document.getElementById('result');
