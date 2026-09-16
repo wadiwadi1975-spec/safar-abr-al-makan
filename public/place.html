@@ -59,6 +59,14 @@ input[type=range]{width:100%;margin:18px 0 6px;accent-color:var(--copper)}
 .layer.open .ico,.layer.open h3{text-align:center}
 .sources{margin-top:26px;border:1px dashed var(--line);border-radius:14px;padding:16px 18px;font-size:13px;color:var(--muted);line-height:2.2}
 .sources b{color:var(--copper)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.gallery figure{margin:0;cursor:pointer}
+.gallery img{width:100%;height:130px;object-fit:cover;border-radius:12px;border:1px solid var(--line);transition:.2s;display:block}
+.gallery img:hover{transform:scale(1.03);border-color:var(--copper)}
+.gallery figcaption{font-size:11px;color:var(--muted);text-align:center;padding:6px 2px;line-height:1.7}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:50;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+#lightbox img{max-width:100%;max-height:88vh;border-radius:12px;border:1px solid var(--line)}
+#lightbox div{position:absolute;bottom:14px;color:var(--muted);font-size:13px}
 .cta{margin:28px 0 10px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .btn{border:none;border-radius:10px;font-family:inherit;font-weight:800;font-size:15px;padding:13px 28px;cursor:pointer}
 .btn-gold{background:linear-gradient(180deg,#d9ab4e,#b38530);color:#1a1408}
@@ -101,6 +109,13 @@ footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
     <div class="layers" id="layers"></div>
   </section>
 
+  <section id="gallerySec" style="display:none;margin-top:26px">
+    <h2 style="font-size:20px;color:var(--copper);margin-bottom:4px">الأرشيف المصور — صور حقيقية 🔵</h2>
+    <div class="gallery" id="gallery"></div>
+    <p style="font-size:12px;color:var(--muted);margin-top:10px">تصوير: مجلس بلدية الجيزة — اضغط أي صورة لتكبيرها</p>
+  </section>
+  <div id="lightbox" onclick="this.style.display='none'"><img id="lbImg" src="" alt="" /><div>اضغط للإغلاق ✕</div></div>
+
   <section class="sources">
     <b>هوية المعلومة:</b><br/>
     🟢 موثقة بوثيقة &nbsp; 🔵 مدعومة بصورة &nbsp; 🟡 رواية شفوية محلية &nbsp; 🟠 استنتاج مبني على مصادر &nbsp; 🔴 إعادة بناء بالذكاء الاصطناعي<br/>
@@ -142,6 +157,18 @@ jeeza: {
     {i:'🕌',t:'الثقافة',d:'🟡 المسجد مركز الحياة اليومية والمناسبات، وكبار السن ذاكرة القرية.'},
     {i:'🗣️',t:'اللغة',d:'🟡 اللهجة الحورانية بكلماتها الخاصة — سجّل كلمة يتذكرها أجدادك.'},
     {i:'📜',t:'الوثائق',d:'🔵 صور وسجلات تُجمع الآن — هل تملك صورة قديمة للجيزة؟ شاركها.'}
+  ],
+  photos: [
+    {f:'1',c:'أطلال بازلتية واسعة'},
+    {f:'2',c:'ممر مقنطر داخل بناء حجري'},
+    {f:'3',c:'بناء بازلتي قديم'},
+    {f:'4',c:'جدران بازلتية'},
+    {f:'5',c:'واجهة بناء حجري'},
+    {f:'6',c:'قنطرة حجرية'},
+    {f:'7',c:'ركام بازلتي وأقواس'},
+    {f:'8',c:'زاوية بناء أثري'},
+    {f:'10',c:'غرفة مقببة من الداخل'},
+    {f:'11',c:'إطلالة عبر مدخل حجري'}
   ]
 },
 bosra: {
@@ -199,13 +226,27 @@ function setYear(i){
   renderStops();
 }
 function soon(){ alert('هذا القسم قيد البناء'); }
+function openLb(src){
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+function renderGallery(){
+  var sec = document.getElementById('gallerySec');
+  if (P.photos && P.photos.length) {
+    sec.style.display = 'block';
+    document.getElementById('gallery').innerHTML = P.photos.map(function(p){
+      var src = '/jz/' + p.f + '.jpg';
+      return '<figure onclick="openLb(\'' + src + '\')"><img loading="lazy" src="' + src + '" alt="' + p.c + '" /><figcaption>' + p.c + '</figcaption></figure>';
+    }).join('');
+  } else { sec.style.display = 'none'; }
+}
 document.getElementById('docTitle').textContent = P.name + ' — السفر عبر المكان';
 document.getElementById('pName').textContent = P.name;
 document.getElementById('pRegion').textContent = P.region;
 document.getElementById('pImg').src = P.img;
 document.getElementById('pImg').alt = P.name;
 document.getElementById('pCredit').textContent = P.credit;
-renderLayers(); setYear(cur);
+renderLayers(); renderGallery(); setYear(cur);
 </script>
 </body>
 </html>
