@@ -218,7 +218,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
   <!-- 3b. EXPLORE ALL -->
   <section class="block" id="timeline">
     <div class="sec-kicker">استكشف الكل</div>
-    <h2 class="sec-title">13 رحلة جاهزة</h2>
+    <h2 class="sec-title">14 رحلة جاهزة</h2>
     <p class="sec-sub">اختر مكانًا وادخل إلى سنواته وطبقاته وأرشيفه.</p>
     <div class="cards3">
       <div class="card3" onclick="goPlace('jeeza')"><div class="ico">🌾</div><h3>الجيزة — 1950</h3><p>ريف درعا • الرحلة التجريبية الأولى</p></div>
@@ -230,6 +230,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
       <div class="card3" onclick="goPlace('mari')" style="border-color:var(--copper)"><div class="ico">🏺</div><h3>ماري ✨ جديد</h3><p>تل الحريري • قصر زمري ليم</p></div>
       <div class="card3" onclick="goPlace('dura')" style="border-color:var(--copper)"><div class="ico">⛪</div><h3>دورا أوروبوس ✨ جديد</h3><p>أقدم كنيسة وكنيس</p></div>
       <div class="card3" onclick="goPlace('apamea')" style="border-color:var(--copper)"><div class="ico">🏛️</div><h3>أفاميا — حماة ✨ جديد</h3><p>كاردو 2 كم والنواعير</p></div>
+      <div class="card3" onclick="goPlace('salahuddin')" style="border-color:var(--copper)"><div class="ico">🏰</div><h3>قلعة صلاح الدين ✨ جديد</h3><p>صهيون • خندق 156م</p></div>
       <div class="card3" onclick="goPlace('citadel')"><div class="ico">🕌</div><h3>قلعة دمشق</h3><p>حامية المدينة الأيوبية</p></div>
       <div class="card3" onclick="goPlace('aleppo')"><div class="ico">🏰</div><h3>قلعة حلب</h3><p>5 آلاف سنة فوق تل واحد</p></div>
       <div class="card3" onclick="goPlace('homs')"><div class="ico">🪨</div><h3>قلعة حمص</h3><p>قلعة أسامة ونقش شيركوه</p></div>
@@ -345,6 +346,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
             <option value="mari">ماري — تل الحريري</option>
             <option value="dura">دورا أوروبوس — الصالحية</option>
             <option value="apamea">أفاميا — حماة</option>
+            <option value="salahuddin">قلعة صلاح الدين — اللاذقية</option>
             <option value="citadel">قلعة دمشق</option>
             <option value="aleppo">قلعة حلب</option>
             <option value="homs">قلعة حمص</option>
@@ -465,6 +467,8 @@ function startJourney(){
       box.innerHTML = '<b>مسجد خالد بن الوليد — حمص</b><br/>سيف الله المسلول 642م، بيبرس 1265م، العثمانيون 1912م...<br/><a href="/place.html?p=khalid">افتح صفحة المسجد ←</a>';
     } else if(q.indexOf('حمص') !== -1){
       box.innerHTML = '<b>حمص — رحلتان جاهزتان</b><br/><a href="/place.html?p=khalid">مسجد خالد بن الوليد ←</a> — <a href="/place.html?p=homs">قلعة حمص ←</a>';
+  } else if(q.indexOf('صلاح') !== -1 || q.indexOf('صهيون') !== -1 || q.indexOf('سمعون') !== -1 || q.indexOf('حفة') !== -1 || q.indexOf('الحفة') !== -1){
+    box.innerHTML = '<b>قلعة صلاح الدين — صهيون</b><br/>خندق 156م، حصار 1188م، يونسكو 2006م...<br/><a href="/place.html?p=salahuddin">افتح القلعة ←</a>';
   } else if(q.indexOf('افاميا') !== -1 || q.indexOf('أفاميا') !== -1 || q.indexOf('فامية') !== -1 || q.indexOf('مضيق') !== -1 || q.indexOf('نواعير') !== -1 || q.indexOf('ناعورة') !== -1 || q.indexOf('حماة') !== -1 || q.indexOf('حماه') !== -1){
     box.innerHTML = '<b>أفاميا — حماة</b><br/>كاردو 2 كم، مسرح 20 ألفًا، قلعة المضيق والنواعير...<br/><a href="/place.html?p=apamea">افتح أفاميا ←</a>';
   } else if(q.indexOf('دورا') !== -1 || q.indexOf('اوروبوس') !== -1 || q.indexOf('أوروبوس') !== -1 || q.indexOf('صالحية') !== -1){
@@ -486,7 +490,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = '13 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
+  box.innerHTML = '14 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=salahuddin">قلعة صلاح الدين</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
 }
 function soon(){
   document.getElementById('add').scrollIntoView({behavior:'smooth'});
