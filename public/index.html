@@ -218,7 +218,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
   <!-- 3b. EXPLORE ALL -->
   <section class="block" id="timeline">
     <div class="sec-kicker">استكشف الكل</div>
-    <h2 class="sec-title">17 رحلة جاهزة</h2>
+    <h2 class="sec-title">18 رحلة جاهزة</h2>
     <p class="sec-sub">اختر مكانًا وادخل إلى سنواته وطبقاته وأرشيفه.</p>
     <div class="cards3">
       <div class="card3" onclick="goPlace('jeeza')"><div class="ico">🌾</div><h3>الجيزة — 1950</h3><p>ريف درعا • الرحلة التجريبية الأولى</p></div>
@@ -233,6 +233,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
       <div class="card3" onclick="goPlace('emar')" style="border-color:var(--copper)"><div class="ico">⚓</div><h3>إيمار ✨ جديد</h3><p>تل مسكنة • ميناء الفرات</p></div>
       <div class="card3" onclick="goPlace('rusafa')" style="border-color:var(--copper)"><div class="ico">✝️</div><h3>الرصافة ✨ جديد</h3><p>سرجيوبوليس • لؤلؤة البادية</p></div>
       <div class="card3" onclick="goPlace('hayr')" style="border-color:var(--copper)"><div class="ico">🏜️</div><h3>الحير الشرقي ✨ جديد</h3><p>مدينة هشام 728م</p></div>
+      <div class="card3" onclick="goPlace('raqqa')" style="border-color:var(--copper)"><div class="ico">🌙</div><h3>الرقة ✨ جديد</h3><p>الرافقة • عاصمة الرشيد</p></div>
       <div class="card3" onclick="goPlace('salahuddin')" style="border-color:var(--copper)"><div class="ico">🏰</div><h3>قلعة صلاح الدين ✨ جديد</h3><p>صهيون • خندق 156م</p></div>
       <div class="card3" onclick="goPlace('citadel')"><div class="ico">🕌</div><h3>قلعة دمشق</h3><p>حامية المدينة الأيوبية</p></div>
       <div class="card3" onclick="goPlace('aleppo')"><div class="ico">🏰</div><h3>قلعة حلب</h3><p>5 آلاف سنة فوق تل واحد</p></div>
@@ -352,6 +353,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
             <option value="emar">إيمار — تل مسكنة</option>
             <option value="rusafa">الرصافة — سرجيوبوليس</option>
             <option value="hayr">قصر الحير الشرقي</option>
+            <option value="raqqa">الرقة — الرافقة</option>
             <option value="salahuddin">قلعة صلاح الدين — اللاذقية</option>
             <option value="citadel">قلعة دمشق</option>
             <option value="aleppo">قلعة حلب</option>
@@ -473,6 +475,8 @@ function startJourney(){
       box.innerHTML = '<b>مسجد خالد بن الوليد — حمص</b><br/>سيف الله المسلول 642م، بيبرس 1265م، العثمانيون 1912م...<br/><a href="/place.html?p=khalid">افتح صفحة المسجد ←</a>';
     } else if(q.indexOf('حمص') !== -1){
       box.innerHTML = '<b>حمص — رحلتان جاهزتان</b><br/><a href="/place.html?p=khalid">مسجد خالد بن الوليد ←</a> — <a href="/place.html?p=homs">قلعة حمص ←</a>';
+  } else if(q.indexOf('رقة') !== -1 || q.indexOf('الرق') !== -1 || q.indexOf('رافقة') !== -1 || q.indexOf('رافقه') !== -1 || q.indexOf('رشيد') !== -1){
+    box.innerHTML = '<b>الرقة — الرافقة</b><br/>عاصمة الرشيد 12 سنة، سور حدوة، قصر البنات...<br/><a href="/place.html?p=raqqa">افتح الرقة ←</a>';
   } else if(q.indexOf('حير') !== -1 || q.indexOf('سخنة') !== -1 || q.indexOf('السخنة') !== -1){
     box.innerHTML = '<b>قصر الحير الشرقي</b><br/>مدينة هشام 728م، قناة 5700م، مئذنة 10م...<br/><a href="/place.html?p=hayr">افتح الحير ←</a>';
   } else if(q.indexOf('رصافة') !== -1 || q.indexOf('سرجيو') !== -1 || q.indexOf('سرجيوس') !== -1 || q.indexOf('هشام') !== -1){
@@ -502,7 +506,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = '17 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=emar">إيمار</a></b> — <b><a href="/place.html?p=rusafa">الرصافة</a></b> — <b><a href="/place.html?p=hayr">الحير الشرقي</a></b> — <b><a href="/place.html?p=salahuddin">قلعة صلاح الدين</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
+  box.innerHTML = '18 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=emar">إيمار</a></b> — <b><a href="/place.html?p=rusafa">الرصافة</a></b> — <b><a href="/place.html?p=hayr">الحير الشرقي</a></b> — <b><a href="/place.html?p=raqqa">الرقة</a></b> — <b><a href="/place.html?p=salahuddin">قلعة صلاح الدين</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
 }
 function soon(){
   document.getElementById('add').scrollIntoView({behavior:'smooth'});
