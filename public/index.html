@@ -303,11 +303,47 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
 
   <!-- 10. ADD MEMORY -->
   <section class="block" id="add">
-    <div class="cta-box">
-      <h3>أضف جزءًا من ذاكرتك</h3>
-      <p>هل تملك صورة قديمة؟ حكاية سمعتها من جدك؟ وثيقة؟ تسجيل؟ اسم مكان قديم؟<br/>ربما تكون ذكراك الصغيرة جزءًا من تاريخ أكبر.</p>
-      <button class="btn btn-gold" onclick="soon()">أضف قصة إلى المكان</button>
-      <div class="badges">المساهمة مجانية دائمًا — الذاكرة ليست للبيع</div>
+    <div class="sec-kicker">ساهم</div>
+    <h2 class="sec-title">أضف جزءًا من ذاكرتك</h2>
+    <p class="sec-sub">هل تملك صورة قديمة؟ حكاية سمعتها من جدك؟ وثيقة؟ سجّلها هنا — تُحفظ في جهازك فورًا ويمكنك إرسالها لنا عبر واتساب أو إيميل للنشر.</p>
+    <div class="cta-box" style="text-align:right">
+      <form id="storyForm" onsubmit="return submitStory(event)" style="display:grid;gap:10px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <input id="sName" placeholder="اسمك (اختياري)" style="padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--parchment);font-family:inherit" />
+          <input id="sYear" placeholder="السنة التقريبية (مثال: 1950)" inputmode="numeric" style="padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--parchment);font-family:inherit" />
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <select id="sPlace" style="padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--parchment);font-family:inherit">
+            <option value="jeeza">الجيزة — درعا</option>
+            <option value="bosra">بصرى الشام</option>
+            <option value="palmyra">تدمر</option>
+            <option value="citadel">قلعة دمشق</option>
+            <option value="aleppo">قلعة حلب</option>
+            <option value="homs">قلعة حمص</option>
+            <option value="khalid">مسجد خالد بن الوليد — حمص</option>
+            <option value="other">مكان آخر (اذكره في النص)</option>
+          </select>
+          <select id="sType" style="padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--parchment);font-family:inherit">
+            <option>🟡 رواية شفوية</option>
+            <option>🔵 صورة قديمة</option>
+            <option>🟢 وثيقة</option>
+            <option>🎙 تسجيل</option>
+            <option>🗣 كلمة/لهجة</option>
+          </select>
+        </div>
+        <textarea id="sText" required minlength="10" rows="4" placeholder="اكتب القصة هنا (10 أحرف على الأقل): من قالها؟ متى؟ أين حدثت؟" style="padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--parchment);font-family:inherit"></textarea>
+        <label style="font-size:13px;color:var(--muted)">📷 صورة مرفقة (اختياري — تبقى في جهازك):
+          <input id="sFile" type="file" accept="image/*" style="margin-top:6px;color:var(--parchment)" />
+        </label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-gold" type="submit">حفظ القصة في جهازي ✓</button>
+          <button class="btn btn-ghost" type="button" onclick="sendStory('wa')">إرسال واتساب</button>
+          <button class="btn btn-ghost" type="button" onclick="sendStory('mail')">إرسال إيميل</button>
+        </div>
+      </form>
+      <div id="sMsg" style="margin-top:12px;font-size:14px;line-height:2"></div>
+      <div id="myStories" style="margin-top:14px;display:grid;gap:8px"></div>
+      <div class="badges">المساهمة مجانية دائمًا — الذاكرة ليست للبيع • 🟡 تُنشر بعد المراجعة والتوثيق</div>
     </div>
   </section>
 
@@ -413,10 +449,57 @@ function discover(){
   box.innerHTML = '7 رحلات جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
 }
 function soon(){
-  var box = document.getElementById('result');
-  box.classList.add('show');
-  box.innerHTML = 'هذا القسم قيد البناء — ابدأ بالرحلة الجاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b>.';
+  document.getElementById('add').scrollIntoView({behavior:'smooth'});
 }
+function getStories(){ try { return JSON.parse(localStorage.getItem('safar_stories')||'[]'); } catch(e){ return []; } }
+function saveStories(a){ try { localStorage.setItem('safar_stories', JSON.stringify(a)); } catch(e){} }
+function renderMyStories(){
+  var box = document.getElementById('myStories'); if(!box) return;
+  var a = getStories();
+  if(!a.length){ box.innerHTML = ''; return; }
+  box.innerHTML = '<b style="color:var(--copper)">قصصك المحفوظة ('+a.length+') — بانتظار الإرسال للنشر:</b>' + a.map(function(s,i){
+    return '<div style="background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.9">'
+    + '<b>'+(s.place||'')+' • '+(s.year||'بدون سنة')+' • '+(s.type||'')+'</b><br/>'
+    + (s.text||'').replace(/</g,'&lt;').slice(0,220)
+    + (s.img ? '<br/><img src="'+s.img+'" style="max-width:100%;border-radius:8px;margin-top:6px" />' : '')
+    + '<br/><span style="color:var(--muted)">'+(s.name||'بدون اسم')+' • '+s.date+'</span></div>';
+  }).join('');
+}
+function submitStory(e){
+  e.preventDefault();
+  var name = document.getElementById('sName').value.trim();
+  var year = document.getElementById('sYear').value.trim();
+  var place = document.getElementById('sPlace').value;
+  var type = document.getElementById('sType').value;
+  var text = document.getElementById('sText').value.trim();
+  if(text.length < 10){ document.getElementById('sMsg').innerHTML = 'اكتب 10 أحرف على الأقل.'; return false; }
+  var file = document.getElementById('sFile').files[0];
+  function done(img){
+    var a = getStories();
+    a.unshift({name:name, year:year, place:place, type:type, text:text, img:img||'', date:new Date().toLocaleDateString('ar')});
+    saveStories(a); renderMyStories();
+    document.getElementById('sMsg').innerHTML = '✓ حُفظت في جهازك. الآن اضغط <b>إرسال واتساب</b> أو <b>إيميل</b> لتصلنا للنشر والتوثيق.';
+    document.getElementById('storyForm').reset();
+  }
+  if(file){
+    var r = new FileReader();
+    r.onload = function(){ var img = new Image(); img.onload = function(){ var c=document.createElement('canvas'); var s=Math.min(1, 800/img.width); c.width=img.width*s; c.height=img.height*s; c.getContext('2d').drawImage(img,0,0,c.width,c.height); done(c.toDataURL('image/jpeg',0.7)); }; img.src = r.result; };
+    r.readAsDataURL(file);
+  } else { done(''); }
+  return false;
+}
+function sendStory(kind){
+  var a = getStories(); var s = a[0];
+  var t = document.getElementById('sText').value.trim();
+  var msg = s ? ('مكان: '+s.place+' | سنة: '+(s.year||'-')+' | نوع: '+s.type+'%0A'+s.text) : (t || 'لدي قصة للمشاركة');
+  if(s && s.text) msg = 'مكان: '+s.place+' | سنة: '+(s.year||'-')+' | نوع: '+s.type+'%0A'+encodeURIComponent(s.text);
+  else msg = encodeURIComponent(msg);
+  // غيّر الرقم/الإيميل إلى بياناتك الحقيقية
+  var WA = '963000000000'; var EMAIL = 'stories@example.com';
+  if(kind==='wa'){ window.open('https://wa.me/'+WA+'?text='+msg, '_blank'); }
+  else { location.href = 'mailto:'+EMAIL+'?subject='+encodeURIComponent('قصة جديدة — السفر عبر المكان')+'&body='+msg; }
+}
+renderMyStories();
 renderJMini();
 slideCompare(50);
 </script>

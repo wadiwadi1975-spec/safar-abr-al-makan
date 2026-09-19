@@ -123,8 +123,8 @@ footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
   </section>
 
   <div class="cta">
-    <button class="btn btn-gold" onclick="soon()">اكتشف العالم الذي عاشوا فيه</button>
-    <button class="btn btn-ghost" onclick="soon()">قارن الماضي × الحاضر</button>
+    <button class="btn btn-gold" onclick="soon()">أضف قصة عن هذا المكان ✓</button>
+    <button class="btn btn-ghost" onclick="location.href='/'">عودة للرئيسية</button>
   </div>
 
   <footer>السفر عبر المكان — نبدأ بالإنسان لنكتشف تاريخ المنطقة</footer>
@@ -398,7 +398,7 @@ function setYear(i){
   document.getElementById('eraText').textContent = P.eras[YEARS[cur]];
   renderStops();
 }
-function soon(){ alert('هذا القسم قيد البناء'); }
+function soon(){ location.href = '/#add'; }
 function openLb(src){
   document.getElementById('lbImg').src = src;
   document.getElementById('lightbox').style.display = 'flex';
