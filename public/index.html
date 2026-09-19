@@ -218,12 +218,13 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
   <!-- 3b. EXPLORE ALL -->
   <section class="block" id="timeline">
     <div class="sec-kicker">استكشف الكل</div>
-    <h2 class="sec-title">7 رحلات جاهزة</h2>
+    <h2 class="sec-title">8 رحلات جاهزة</h2>
     <p class="sec-sub">اختر مكانًا وادخل إلى سنواته وطبقاته وأرشيفه.</p>
     <div class="cards3">
       <div class="card3" onclick="goPlace('jeeza')"><div class="ico">🌾</div><h3>الجيزة — 1950</h3><p>ريف درعا • الرحلة التجريبية الأولى</p></div>
       <div class="card3" onclick="goPlace('bosra')"><div class="ico">🏛️</div><h3>بصرى الشام</h3><p>المسرح الروماني والقلعة</p></div>
       <div class="card3" onclick="goPlace('palmyra')"><div class="ico">🏜️</div><h3>تدمر</h3><p>عروس البادية وزنوبيا</p></div>
+      <div class="card3" onclick="goPlace('damascus')" style="border-color:var(--copper)"><div class="ico">🕌</div><h3>دمشق القديمة ✨ جديد</h3><p>الأموي وجوبيتر والحميدية</p></div>
       <div class="card3" onclick="goPlace('citadel')"><div class="ico">🕌</div><h3>قلعة دمشق</h3><p>حامية المدينة الأيوبية</p></div>
       <div class="card3" onclick="goPlace('aleppo')"><div class="ico">🏰</div><h3>قلعة حلب</h3><p>5 آلاف سنة فوق تل واحد</p></div>
       <div class="card3" onclick="goPlace('homs')"><div class="ico">🪨</div><h3>قلعة حمص</h3><p>قلعة أسامة ونقش شيركوه</p></div>
@@ -333,6 +334,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
             <option value="jeeza">الجيزة — درعا</option>
             <option value="bosra">بصرى الشام</option>
             <option value="palmyra">تدمر</option>
+            <option value="damascus">دمشق القديمة</option>
             <option value="citadel">قلعة دمشق</option>
             <option value="aleppo">قلعة حلب</option>
             <option value="homs">قلعة حمص</option>
@@ -453,8 +455,10 @@ function startJourney(){
       box.innerHTML = '<b>مسجد خالد بن الوليد — حمص</b><br/>سيف الله المسلول 642م، بيبرس 1265م، العثمانيون 1912م...<br/><a href="/place.html?p=khalid">افتح صفحة المسجد ←</a>';
     } else if(q.indexOf('حمص') !== -1){
       box.innerHTML = '<b>حمص — رحلتان جاهزتان</b><br/><a href="/place.html?p=khalid">مسجد خالد بن الوليد ←</a> — <a href="/place.html?p=homs">قلعة حمص ←</a>';
-  } else if(q.indexOf('قلعة') !== -1 || q.indexOf('دمشق') !== -1){
+  } else if(q.indexOf('قلعة') !== -1 && q.indexOf('دمشق') !== -1){
     box.innerHTML = '<b>قلعة دمشق — حامية المدينة</b><br/>العادل الأيوبي، 12 برجًا، 8 قرون من الحصار...<br/><a href="/place.html?p=citadel">افتح صفحة القلعة ←</a>';
+  } else if(q.indexOf('اموي') !== -1 || q.indexOf('أموي') !== -1 || q.indexOf('حميدية') !== -1 || q.indexOf('جابية') !== -1 || q.indexOf('قديمة') !== -1 || q.indexOf('دمشق') !== -1){
+    box.innerHTML = '<b>دمشق القديمة — الأموي وجوبيتر والحميدية</b><br/>3000 سنة قداسة، 7 مكونات في مكان واحد...<br/><a href="/place.html?p=damascus">افتح دمشق القديمة ←</a> — <a href="/place.html?p=citadel">قلعة دمشق ←</a>';
   } else {
     box.innerHTML = 'المكان: <b>' + q.replace(/</g,'&lt;') + '</b><br/>سيُضاف قريبًا — <a href="#add">كن أول من يضيف قصة عنه</a>.';
   }
@@ -462,7 +466,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = '7 رحلات جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
+  box.innerHTML = '8 رحلات جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
 }
 function soon(){
   document.getElementById('add').scrollIntoView({behavior:'smooth'});
