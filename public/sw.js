@@ -1,4 +1,4 @@
-var CACHE = 'safar-v1';
+var CACHE = 'safar-v2';
 var CORE = ['/', '/place.html', '/cover.jpg', '/jeeza-home.jpg', '/manifest.json'];
 self.addEventListener('install', function(e) {
   e.waitUntil(

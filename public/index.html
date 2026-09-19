@@ -506,10 +506,13 @@ function submitStory(e){
 }
 function sendStory(kind){
   var a = getStories(); var s = a[0];
-  var t = document.getElementById('sText').value.trim();
-  var msg = s ? ('مكان: '+s.place+' | سنة: '+(s.year||'-')+' | نوع: '+s.type+'%0A'+s.text) : (t || 'لدي قصة للمشاركة');
-  if(s && s.text) msg = 'مكان: '+s.place+' | سنة: '+(s.year||'-')+' | نوع: '+s.type+'%0A'+encodeURIComponent(s.text);
-  else msg = encodeURIComponent(msg);
+  var t = (document.getElementById('sText')||{}).value || '';
+  t = (t||'').trim();
+  var raw;
+  if(s && s.text){ raw = 'قصة جديدة — السفر عبر المكان\nمكان: '+s.place+' | سنة: '+(s.year||'-')+' | نوع: '+s.type+'\nالاسم: '+(s.name||'-')+'\n'+s.text; }
+  else if(t){ raw = 'قصة جديدة — السفر عبر المكان\n'+t; }
+  else { document.getElementById('sMsg').innerHTML = 'اكتب قصتك أولاً ثم اضغط حفظ، أو اكتبها الآن قبل الإرسال.'; return; }
+  var msg = encodeURIComponent(raw);
   // غيّر الرقم/الإيميل إلى بياناتك الحقيقية
   var WA = '963000000000'; var EMAIL = 'stories@example.com';
   if(kind==='wa'){ window.open('https://wa.me/'+WA+'?text='+msg, '_blank'); }
