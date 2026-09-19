@@ -103,6 +103,10 @@ footer{text-align:center;color:#5d584c;font-size:12px;padding:24px 0 30px}
     <input type="range" id="timeRange" min="0" max="6" step="1" value="3" oninput="setYear(this.value)" />
     <div class="stops" id="stops"></div>
     <p class="era" id="eraText"></p>
+    <figure id="eraFig" style="display:none;margin-top:14px">
+      <img id="eraImg" src="" alt="" style="width:100%;border-radius:14px;border:1px solid var(--line);max-height:380px;object-fit:cover" loading="lazy" onclick="openLb(this.src)" />
+      <figcaption id="eraCap" style="font-size:12px;color:var(--muted);margin-top:6px;line-height:1.9"></figcaption>
+    </figure>
   </section>
 
   <section>
@@ -385,6 +389,15 @@ damascus: {
     '1979م': '🟢 يونسكو: دمشق القديمة تراث عالمي — الأسوار والأبواب السبعة (شرقي والجابية) والخانات والبيوت الدمشقية بفناء وقاعة ومشرقة.',
     '2026م': '🔵 اليوم: الأموي ومئذنته الغربية وقوس الحميدية الروماني والبيمارستان متحفًا للطب — والأسواق والبيوت تنبض رغم كل شيء.'
   },
+  eraImgs: {
+    '3000ق.م': {s:'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Jupiter%20temple%20in%20Damascus.jpg',c:'حجارة المعبد — أقدم طبقة حجرية ظاهرة (بدون بشر)'},
+    '64ق.م': {s:'https://commons.wikimedia.org/wiki/Special:FilePath/Damascus%20Bab%20Sharqi%20(Eastern%20Gate)%204712.jpg',c:'باب شرقي — البوابة الرومانية بحالتها القديمة (لقطة معمارية)'},
+    '705م': {s:'https://commons.wikimedia.org/wiki/Special:FilePath/Forecourt%20of%20the%20Ummayad%20Mosque%2C%20Damascus%20by%20Gustav%20Bauernfeind.jpg',c:'صحن الأموي — لوحة 1890 توثق الفراغ المعماري قبل الازدحام'},
+    '1154م': {s:'https://commons.wikimedia.org/wiki/Special:FilePath/Umayyad%20Mosque-Minaret%20al-Gharbiye.jpg',c:'المئذنة الغربية — بناء حجري زنكي/مملوكي فوق برج المعبد (بدون بشر)'},
+    '1780م': {s:'https://commons.wikimedia.org/wiki/Special:FilePath/Damascus%20Al-Hamidiyah%20Souq%20from%20Umayyad%20Mosque%20entrance%201504.jpg',c:'مدخل الحميدية والقوس الروماني — لقطة محور السوق (2010، محور فارغ)'},
+    '1979م': {s:'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Umayyad%20Mosque%2C%20the%20Great%20Mosque%20of%20Damascus%2C%20Damascus%2C%20Syria.jpg',c:'صحن الأموي الجنوبي — لقطة توثيقية فارغة (2008)'},
+    '2026م': {s:'https://commons.wikimedia.org/wiki/Special:FilePath/Syria%2C%20Damascus%2C%20Ancient%20souq%20near%20the%20Umayyad%20Mosque%20inside%20the%20old%20city%20of%20Damascus.jpg',c:'زقاق وخان قرب الأموي — نسيج المدينة القديمة'}
+  },
   layers: [
     {i:'🕌',t:'الجامع الأموي',d:'🟢 157×97م، قبة 45م، 3 مآذن على أبراج المعبد: جيرون/النوفرة شرقًا، البريد غربًا، العمارة شمالًا، الزيادة/الساعات جنوبًا — كلفة 560 ألف دينار ذهبي.'},
     {i:'🏛️',t:'معبد جوبيتر',d:'🟢 الجدران الجنوبية والشرقية للأموي هي جدران التيمينوس نفسها — أعمدة كورنثية وقوس البروبيليون الغربي في نهاية الحميدية ما تزال واقفة.'},
@@ -431,6 +444,12 @@ function setYear(i){
   document.getElementById('timeRange').value = cur;
   document.getElementById('yearBig').textContent = YEARS[cur];
   document.getElementById('eraText').textContent = P.eras[YEARS[cur]];
+  var fig = document.getElementById('eraFig');
+  if(P.eraImgs && P.eraImgs[YEARS[cur]]){
+    document.getElementById('eraImg').src = P.eraImgs[YEARS[cur]].s;
+    document.getElementById('eraCap').textContent = P.eraImgs[YEARS[cur]].c || '';
+    fig.style.display = 'block';
+  } else { fig.style.display = 'none'; }
   renderStops();
 }
 function soon(){ location.href = '/#add'; }
