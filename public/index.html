@@ -218,7 +218,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
   <!-- 3b. EXPLORE ALL -->
   <section class="block" id="timeline">
     <div class="sec-kicker">استكشف الكل</div>
-    <h2 class="sec-title">10 رحلات جاهزة</h2>
+    <h2 class="sec-title">11 رحلة جاهزة</h2>
     <p class="sec-sub">اختر مكانًا وادخل إلى سنواته وطبقاته وأرشيفه.</p>
     <div class="cards3">
       <div class="card3" onclick="goPlace('jeeza')"><div class="ico">🌾</div><h3>الجيزة — 1950</h3><p>ريف درعا • الرحلة التجريبية الأولى</p></div>
@@ -227,6 +227,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
       <div class="card3" onclick="goPlace('damascus')" style="border-color:var(--copper)"><div class="ico">🕌</div><h3>دمشق القديمة ✨ جديد</h3><p>الأموي وجوبيتر والحميدية</p></div>
       <div class="card3" onclick="goPlace('ugarit')" style="border-color:var(--copper)"><div class="ico">🔤</div><h3>أوغاريت ✨ جديد</h3><p>رأس شمرا • أول أبجدية</p></div>
       <div class="card3" onclick="goPlace('ebla')" style="border-color:var(--copper)"><div class="ico">📚</div><h3>إبلا ✨ جديد</h3><p>تل مرديخ • أقدم مكتبة</p></div>
+      <div class="card3" onclick="goPlace('mari')" style="border-color:var(--copper)"><div class="ico">🏺</div><h3>ماري ✨ جديد</h3><p>تل الحريري • قصر زمري ليم</p></div>
       <div class="card3" onclick="goPlace('citadel')"><div class="ico">🕌</div><h3>قلعة دمشق</h3><p>حامية المدينة الأيوبية</p></div>
       <div class="card3" onclick="goPlace('aleppo')"><div class="ico">🏰</div><h3>قلعة حلب</h3><p>5 آلاف سنة فوق تل واحد</p></div>
       <div class="card3" onclick="goPlace('homs')"><div class="ico">🪨</div><h3>قلعة حمص</h3><p>قلعة أسامة ونقش شيركوه</p></div>
@@ -339,6 +340,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
             <option value="damascus">دمشق القديمة</option>
             <option value="ugarit">أوغاريت — رأس شمرا</option>
             <option value="ebla">إبلا — تل مرديخ</option>
+            <option value="mari">ماري — تل الحريري</option>
             <option value="citadel">قلعة دمشق</option>
             <option value="aleppo">قلعة حلب</option>
             <option value="homs">قلعة حمص</option>
@@ -459,6 +461,8 @@ function startJourney(){
       box.innerHTML = '<b>مسجد خالد بن الوليد — حمص</b><br/>سيف الله المسلول 642م، بيبرس 1265م، العثمانيون 1912م...<br/><a href="/place.html?p=khalid">افتح صفحة المسجد ←</a>';
     } else if(q.indexOf('حمص') !== -1){
       box.innerHTML = '<b>حمص — رحلتان جاهزتان</b><br/><a href="/place.html?p=khalid">مسجد خالد بن الوليد ←</a> — <a href="/place.html?p=homs">قلعة حمص ←</a>';
+  } else if(q.indexOf('ماري') !== -1 || q.indexOf('حريري') !== -1 || q.indexOf('زمري') !== -1 || q.indexOf('زيمري') !== -1 || q.indexOf('بوكمال') !== -1){
+    box.innerHTML = '<b>ماري — تل الحريري</b><br/>قصر 300 قاعة، فريسك التتويج، 25 ألف رقيم...<br/><a href="/place.html?p=mari">افتح ماري ←</a>';
   } else if(q.indexOf('ابلا') !== -1 || q.indexOf('إبلا') !== -1 || q.indexOf('مرديخ') !== -1 || q.indexOf('سراقب') !== -1 || q.indexOf('ادلب') !== -1 || q.indexOf('إدلب') !== -1){
     box.innerHTML = '<b>إبلا — تل مرديخ</b><br/>17 ألف رقيم، القصر G، أقدم مكتبة 2400ق.م...<br/><a href="/place.html?p=ebla">افتح إبلا ←</a>';
   } else if(q.indexOf('اوغاريت') !== -1 || q.indexOf('أوغاريت') !== -1 || q.indexOf('شمرا') !== -1 || q.indexOf('شمعا') !== -1 || q.indexOf('لاذق') !== -1){
@@ -474,7 +478,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = '10 رحلات جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
+  box.innerHTML = '11 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
 }
 function soon(){
   document.getElementById('add').scrollIntoView({behavior:'smooth'});
