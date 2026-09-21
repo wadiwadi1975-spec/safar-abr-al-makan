@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
@@ -218,7 +218,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
   <!-- 3b. EXPLORE ALL -->
   <section class="block" id="timeline">
     <div class="sec-kicker">استكشف الكل</div>
-    <h2 class="sec-title">23 رحلة جاهزة</h2>
+    <h2 class="sec-title">27 رحلة جاهزة</h2>
     <p class="sec-sub">اختر مكانًا وادخل إلى سنواته وطبقاته وأرشيفه.</p>
     <div class="cards3">
       <div class="card3" onclick="goPlace('jeeza')"><div class="ico">🌾</div><h3>الجيزة — 1950</h3><p>ريف درعا • الرحلة التجريبية الأولى</p></div>
@@ -229,6 +229,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
       <div class="card3" onclick="goPlace('saidnaya')" style="border-color:var(--copper)"><div class="ico">🕊️</div><h3>صيدنايا ✨ جديد</h3><p>دير السيدة 547م</p></div>
       <div class="card3" onclick="goPlace('arwad')" style="border-color:var(--copper)"><div class="ico">🏝️</div><h3>أرواد ✨ جديد</h3><p>الجزيرة الفينيقية</p></div>
       <div class="card3" onclick="goPlace('tartus')" style="border-color:var(--copper)"><div class="ico">⚓</div><h3>طرطوس ✨ جديد</h3><p>أنترادوس والكاتدرائية</p></div>
+      <div class="card3" onclick="goPlace('shahba')" style="border-color:var(--copper)"><div class="ico">🏛️</div><h3>شهبا ✨ جديد</h3><p>مدينة فيليبوس العربي</p></div>
       <div class="card3" onclick="goPlace('ugarit')" style="border-color:var(--copper)"><div class="ico">🔤</div><h3>أوغاريت ✨ جديد</h3><p>رأس شمرا • أول أبجدية</p></div>
       <div class="card3" onclick="goPlace('ebla')" style="border-color:var(--copper)"><div class="ico">📚</div><h3>إبلا ✨ جديد</h3><p>تل مرديخ • أقدم مكتبة</p></div>
       <div class="card3" onclick="goPlace('mari')" style="border-color:var(--copper)"><div class="ico">🏺</div><h3>ماري ✨ جديد</h3><p>تل الحريري • قصر زمري ليم</p></div>
@@ -244,6 +245,9 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
       <div class="card3" onclick="goPlace('aleppo')"><div class="ico">🏰</div><h3>قلعة حلب</h3><p>5 آلاف سنة فوق تل واحد</p></div>
       <div class="card3" onclick="goPlace('homs')"><div class="ico">🪨</div><h3>قلعة حمص</h3><p>قلعة أسامة ونقش شيركوه</p></div>
       <div class="card3" onclick="goPlace('khalid')" style="border-color:var(--copper)"><div class="ico">🕌</div><h3>مسجد خالد بن الوليد ✨ جديد</h3><p>حمص • 642م → 2026م</p></div>
+      <div class="card3" onclick="goPlace('qanawat')" style="border-color:var(--copper)"><div class="ico">🏛️</div><h3>قنوات — كاناثا ✨ جديد</h3><p>ديكابولس الرومانية • معابد ومسرح</p></div>
+      <div class="card3" onclick="goPlace('salhad')" style="border-color:var(--copper)"><div class="ico">🏰</div><h3>صلخد (صرخد) ✨ جديد</h3><p>قلعة الدرز والأتراك</p></div>
+      <div class="card3" onclick="goPlace('deirezor')" style="border-color:var(--copper)"><div class="ico">⚓</div><h3>دير الزور ✨ جديد</h3><p>نهر الفرات • خرائط الأضمش</p></div>
     </div>
   </section>
 
@@ -354,6 +358,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
             <option value="saidnaya">صيدنايا — دير السيدة</option>
             <option value="arwad">جزيرة أرواد</option>
             <option value="tartus">طرطوس القديمة</option>
+            <option value="shahba">شهبا فيليبوبوليس</option>
             <option value="ugarit">أوغاريت — رأس شمرا</option>
             <option value="ebla">إبلا — تل مرديخ</option>
             <option value="mari">ماري — تل الحريري</option>
@@ -369,7 +374,10 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
             <option value="aleppo">قلعة حلب</option>
             <option value="homs">قلعة حمص</option>
             <option value="khalid">مسجد خالد بن الوليد — حمص</option>
-            <option value="other">مكان آخر (اذكره في النص)</option>
+            <option value="qanawat">قنوات — كاناثا — السويداء</option>
+            <option value="salhad">صلخد (صرخد) — جبل الدروز</option>
+            <option value="deirezor">دير الزور — الفرات</option>
+                        <option value="other">مكان آخر (اذكره في النص)</option>
           </select>
           <select id="sType" style="padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--parchment);font-family:inherit">
             <option>🟡 رواية شفوية</option>
@@ -487,6 +495,8 @@ function startJourney(){
       box.innerHTML = '<b>حمص — رحلتان جاهزتان</b><br/><a href="/place.html?p=khalid">مسجد خالد بن الوليد ←</a> — <a href="/place.html?p=homs">قلعة حمص ←</a>';
   } else if(q.indexOf('طرطوس') !== -1 || q.indexOf('انترادوس') !== -1 || q.indexOf('أنترادوس') !== -1 || q.indexOf('تورتوسا') !== -1){
     box.innerHTML = '<b>طرطوس القديمة</b><br/>أنترادوس الفينيقية، كاتدرائية الحجاج، برج السرداب...<br/><a href="/place.html?p=tartus">افتح طرطوس ←</a>';
+  } else if(q.indexOf('شهبا') !== -1 || q.indexOf('فيليبوبوليس') !== -1 || q.indexOf('فيلبوبوليس') !== -1){
+    box.innerHTML = '<b>شهبا (فيليبوبوليس)</b><br/>مدينة الإمبراطور فيليبوس العربي، كاليبي، حمامات، مسرح...<br/><a href="/place.html?p=shahba">افتح شهبا ←</a>';
   } else if(q.indexOf('ارواد') !== -1 || q.indexOf('أرواد') !== -1 || q.indexOf('ارادوس') !== -1 || q.indexOf('أرادوس') !== -1){
     box.innerHTML = '<b>جزيرة أرواد</b><br/>مملكة فينيقية، قلعتان، آخر صليبي 1302م...<br/><a href="/place.html?p=arwad">افتح أرواد ←</a>';
   } else if(q.indexOf('صيدنايا') !== -1 || q.indexOf('صيدنايه') !== -1 || q.indexOf('شاغورة') !== -1 || q.indexOf('شيروبيم') !== -1){
@@ -515,6 +525,12 @@ function startJourney(){
     box.innerHTML = '<b>إبلا — تل مرديخ</b><br/>17 ألف رقيم، القصر G، أقدم مكتبة 2400ق.م...<br/><a href="/place.html?p=ebla">افتح إبلا ←</a>';
   } else if(q.indexOf('اوغاريت') !== -1 || q.indexOf('أوغاريت') !== -1 || q.indexOf('شمرا') !== -1 || q.indexOf('شمعا') !== -1 || q.indexOf('لاذق') !== -1){
     box.innerHTML = '<b>أوغاريت — رأس شمرا</b><br/>أول أبجدية 1400ق.م، قصر 90 غرفة، معبدا بعل ودجن...<br/><a href="/place.html?p=ugarit">افتح أوغاريت ←</a>';
+  } else if(q.indexOf('قنوات') !== -1 || q.indexOf('كاناثا') !== -1 || q.indexOf('قناه') !== -1){
+    box.innerHTML = '<b>قنوات — كاناثا</b><br/>ديكابولس الرومانية، معابد ومسرح وبازيليكا...<br/><a href="/place.html?p=qanawat">افتح قنوات ←</a>';
+  } else if(q.indexOf('صرخد') !== -1 || q.indexOf('صلخد') !== -1 || q.indexOf('الدروز') !== -1){
+    box.innerHTML = '<b>صلخد — قلعة الدرز</b><br/>قلعة فاطمية ونبطية، دروز جبل الدروز...<br/><a href="/place.html?p=salhad">افتح صلخد ←</a>';
+  } else if(q.indexOf('دير الزور') !== -1 || q.indexOf('ديرزور') !== -1 || q.indexOf('ديرالزور') !== -1 || q.indexOf('الفرات') !== -1){
+    box.innerHTML = '<b>دير الزور — الفرات</b><br/>خرائط الأضمش، نهر الفرات، منطقة الفرات...<br/><a href="/place.html?p=deirezor">افتح دير الزور ←</a>';
   } else if(q.indexOf('قلعة') !== -1 && q.indexOf('دمشق') !== -1){
     box.innerHTML = '<b>قلعة دمشق — حامية المدينة</b><br/>العادل الأيوبي، 12 برجًا، 8 قرون من الحصار...<br/><a href="/place.html?p=citadel">افتح صفحة القلعة ←</a>';
   } else if(q.indexOf('اموي') !== -1 || q.indexOf('أموي') !== -1 || q.indexOf('حميدية') !== -1 || q.indexOf('جابية') !== -1 || q.indexOf('قديمة') !== -1 || q.indexOf('دمشق') !== -1){
@@ -526,7 +542,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = '23 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=maaloula">معلولا</a></b> — <b><a href="/place.html?p=saidnaya">صيدنايا</a></b> — <b><a href="/place.html?p=arwad">أرواد</a></b> — <b><a href="/place.html?p=tartus">طرطوس</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=emar">إيمار</a></b> — <b><a href="/place.html?p=rusafa">الرصافة</a></b> — <b><a href="/place.html?p=hayr">الحير الشرقي</a></b> — <b><a href="/place.html?p=raqqa">الرقة</a></b> — <b><a href="/place.html?p=maarra">المعرة</a></b> — <b><a href="/place.html?p=salahuddin">قلعة صلاح الدين</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد بن الوليد</a></b>';
+  box.innerHTML = '27 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=maaloula">معلولا</a></b> — <b><a href="/place.html?p=saidnaya">صيدنايا</a></b> — <b><a href="/place.html?p=arwad">أرواد</a></b> — <b><a href="/place.html?p=tartus">طرطوس</a></b> — <b><a href="/place.html?p=shahba">شهبا</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=emar">إيمار</a></b> — <b><a href="/place.html?p=rusafa">الرصافة</a></b> — <b><a href="/place.html?p=hayr">الحير الشرقي</a></b> — <b><a href="/place.html?p=raqqa">الرقة</a></b> — <b><a href="/place.html?p=maarra">المعرة</a></b> — <b><a href="/place.html?p=salahuddin">قلعة صلاح الدين</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد</a></b> — <b><a href="/place.html?p=qanawat">قنوات</a></b> — <b><a href="/place.html?p=salhad">صلخد</a></b> — <b><a href="/place.html?p=deirezor">دير الزور</a></b>';
 }
 function soon(){
   document.getElementById('add').scrollIntoView({behavior:'smooth'});
