@@ -1477,7 +1477,44 @@ sergilla: {
     {s:'https://commons.wikimedia.org/wiki/Special:FilePath/Andron,_Serjilla_(سيرجيلة),_Syria_-_2016_6945_-_Dumbarton_Oaks.jpg',c:'الأندرون على منتظرة الماء'}
   ],
   gcredit: 'صور: ويكيميديا كومنز + دومبارتن أوكس (رخص حرة) — صور خارجية فقط بدون بشر — اضغط للتكبير'
-}};
+}  {
+  name: 'السويداء (سوادا / ديونيسياس)', region: 'جبل الدروز — السويداء (عاصمة المحافظة)',
+  img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/As-Suwayda_The_Arch_of_Dionysias.jpg/800px-As-Suwayda_The_Arch_of_Dionysias.jpg',
+  credit: 'قوس ديونيسياس الأثري في وسط مدينة السويداء — ويكيميديا',
+  years: ['300 ق.م', '100 ق.م', '244 م', 'القرن 2 م', 'القرن 3 م', 'القرن 5 م', 'اليوم'],
+  eras: [
+    'تأسيس الأنباط — سوادا',
+    'التوسع النبطي — عبادة ذي الشرى',
+    'فيليب العربي — فيليبوبوليس',
+    'الازدهار الروماني — معابد ومسرح',
+    'التوسع النبطي والروماني — تجارة النبيذ',
+    'العصر البيزنطي — كنائس وبازيليكا',
+    'جبل الدروز — متحف مفتوح'
+  ],
+  layers: [
+    {era:'ما قبل التاريخ', what:'استيطان قديم — كهوف جبل الدروز', detail:'.Areas of lithic tools and rock shelters in Jabal al-Druze region show human presence since the Old Stone Age.', sources:[]},
+    {era:'300 ق.م', what:'تأسيس الأنباط — سوادا', detail:'The Nabataeans founded the city as Suada, a trading settlement at the crossroads of incense routes.', sources:[]},
+    {era:'100 ق.م', what:'عبادة ذي الشرى — المعبد النبطي', detail:'A Nabataean temple dedicated to the god Dushara was built in the eastern quarter, later syncretized with Dionysus.', sources:[]},
+    {era:'64 ق.م', what:'الغزو الروماني — اسم ديونيسياس', detail:'Rome took control of the region and renamed the city Dionysias Soada in honor of Dionysus, god of wine — the area was a famous wine-producing region.', sources:[]},
+    {era:'244-249 م', what:'فيليب العربي — فيليبوبوليس', detail:'Emperor Philip the Arab rebuilt the city as Philippopolis with a Roman grid plan: two main colonnaded streets (cardo and decumanus) meeting at an oval forum.', sources:[]},
+    {era:'القرن 2 م', what:'المعبد الوثني — الأعمدة الكورنثية', detail:'A grand temple with six Corinthian columns was built west of the decumanus. An imperial temple with a vast paved courtyard and underground vaults was constructed in the southwest.', sources:[]},
+    {era:'القرن 2 م', what:'المسرح الكبير — 1200 متفرج', detail:'A magnificent theater south of the Philippeion could seat 1200 spectators across two tiers of seating, with a diameter of 43 meters.', sources:[]},
+    {era:'القرن 2 م', what:'الحمامات الكبرى — 500 مستحم', detail:'The largest known baths of the 3rd century AD, east of the cardo, with three temperature zones (cold, warm, hot), plus sports halls, library, and reading rooms.', sources:[]},
+    {era:'القرن 3 م', what:'خزانات المياه — الأكوادوك', detail:'Massive stone bases (aqueducts) carried water from al-Tayba, 16 km east, to supply the baths and fountains.', sources:[]},
+    {era:'القرن 5 م', what:'الكنيسة الكبرى والبازيليكا', detail:'A 5th-century Byzantine basilica was built using columns from the pagan temple. Inscriptions record that Salome, mother of Bishop George, donated the church.', sources:[]},
+    {era:'اليوم', what:'متحف السويداء — فسيفساء وإسقاطات', detail:'The Suwayda Museum houses remarkable mosaics, basalt statues including the famous Allat-Minerva, and artifacts from across the governorate. Many Roman houses are still inhabited.', sources:[]}
+  ],
+  photos: [
+    {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/As-Suwayda_The_Arch_of_Dionysias.jpg/800px-As-Suwayda_The_Arch_of_Dionysias.jpg', caption:'قوس ديونيسياس — بقايا الكنيسة الصغرى with grape motifs'},
+    {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/As-Suwayda_The_Agora_of_Dionysias.jpg/800px-As-Suwayda_The_Agora_of_Dionysias.jpg', caption:'الساحة العامة —أغورا ديونيسياس الرومانية'},
+    {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Ancient_Roman_theater_at_Suwayda.jpg/800px-Ancient_Roman_theater_at_Suwayda.jpg', caption:'المسرح الروماني الصغير — أوديون السويداء'},
+    {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/St._George%27s_Cathedral_in_As-Suwayda.jpg/668px-St._George%27s_Cathedral_in_As-Suwayda.jpg', caption:'كنيسة القديس جاورجيوس — البازيليكا البيزنطية'},
+    {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Allat-Minerva.jpg/400px-Allat-Minerva.jpg', caption:'تمثال آلهة Аллат-مينيرفا — متحف دمشق'}
+  ],
+  gcredit: ' asm.com.sy'
+}
+
+};
 var P = (function(){
   try {
     var q = new URLSearchParams(location.search).get('p');
