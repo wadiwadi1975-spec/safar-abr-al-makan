@@ -218,7 +218,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
   <!-- 3b. EXPLORE ALL -->
   <section class="block" id="timeline">
     <div class="sec-kicker">استكشف الكل</div>
-     <h2 class="sec-title">46 رحلة جاهزة</h2>
+     <h2 class="sec-title">47 رحلة جاهزة</h2>
     <p class="sec-sub">اختر مكانًا وادخل إلى سنواته وطبقاته وأرشيفه.</p>
     <div class="cards3">
       <div class="card3" onclick="goPlace('jeeza')"><div class="ico">🌾</div><h3>الجيزة — 1950</h3><p>ريف درعا • الرحلة التجريبية الأولى</p></div>
@@ -267,6 +267,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
       <div class="card3" onclick="goPlace('qalblozeh')" style="border-color:var(--copper)"><div class="ico">⛪</div><h3>قلب لوزة — أقدم كنيسة ✨ جديد</h3><p>بيزنطية • بازيليكا حجرية • إدلب</p></div>
       <div class="card3" onclick="goPlace('tellamarna')" style="border-color:var(--copper)"><div class="ico">🌱</div><h3>تل عمارنة — حلف والفرات ✨ جديد</h3><p>6000 ق.م • فخار مرسوم • حلب</p></div>
       <div class="card3" onclick="goPlace('ibnwardan')" style="border-color:var(--copper)"><div class="ico">🏰</div><h3>قصر ابن وردان — يوستنيانوس ✨ جديد</h3><p>بيزنطي 564م • صحراء حمص</p></div>
+      <div class="card3" onclick="goPlace('halabiye')" style="border-color:var(--copper)"><div class="ico">🏯</div><h3>حلبية — زينبيا على الفرات ✨ جديد</h3><p>ทيلوقس + زينبيا + فرات</p></div>
     </div>
   </section>
 
@@ -415,6 +416,7 @@ footer{padding:26px 0 34px;text-align:center;color:#5d584c;font-size:12px;border
                           <option value="qalblozeh">آثار قلب لوزة — إدلب — سوريا</option>
                           <option value="tellamarna">تل عمارنة — حلب — سوريا</option>
                           <option value="ibnwardan">قصر ابن وردان — حمص — سوريا</option>
+                          <option value="halabiye">حلبية — دير الزور — سوريا</option>
                          <option value="other">مكان آخر (اذكره في النص)</option>
           </select>
           <select id="sType" style="padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--parchment);font-family:inherit">
@@ -577,6 +579,8 @@ function startJourney(){
     box.innerHTML = '<b>قنوات — كاناثا</b><br/>ديكابولس الرومانية، معابد ومسرح وبازيليكا...<br/><a href="/place.html?p=qanawat">افتح قنوات ←</a>';
   } else if(q.indexOf('صرخد') !== -1 || q.indexOf('صلخد') !== -1 || q.indexOf('الدروز') !== -1){
     box.innerHTML = '<b>صلخد — قلعة الدرز</b><br/>قلعة فاطمية ونبطية، دروز جبل الدروز...<br/><a href="/place.html?p=salhad">افتح صلخد ←</a>';
+  } else if(q.indexOf('حلبية') !== -1 || q.indexOf('halabiye') !== -1 || q.indexOf('زينبيا') !== -1 || q.indexOf('zenobia') !== -1){
+    box.innerHTML = '<b>حلبية — مدينة زينبيا</b><br/>قلعة على الفرات بناها ملكة تدمر...<br/><a href="/place.html?p=halabiye">افتح حلبية ←</a>';
   } else if(q.indexOf('دير الزور') !== -1 || q.indexOf('ديرزور') !== -1 || q.indexOf('ديرالزور') !== -1 || q.indexOf('الفرات') !== -1){
     box.innerHTML = '<b>دير الزور — الفرات</b><br/>خرائط الأضمش، نهر الفرات، منطقة الفرات...<br/><a href="/place.html?p=deirezor">افتح دير الزور ←</a>';
   } else if(q.indexOf('تل براك') !== -1 || q.indexOf('ناغار') !== -1 || q.indexOf('نوار') !== -1 || q.indexOf('الحسك') !== -1){
@@ -618,7 +622,7 @@ function startJourney(){
 function discover(){
   var box = document.getElementById('result');
   box.classList.add('show');
-  box.innerHTML = ' 46 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=maaloula">معلولا</a></b> — <b><a href="/place.html?p=saidnaya">صيدنايا</a></b> — <b><a href="/place.html?p=arwad">أرواد</a></b> — <b><a href="/place.html?p=tartus">طرطوس</a></b> — <b><a href="/place.html?p=shahba">شهبا</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=emar">إيمار</a></b> — <b><a href="/place.html?p=rusafa">الرصافة</a></b> — <b><a href="/place.html?p=hayr">الحير الشرقي</a></b> — <b><a href="/place.html?p=raqqa">الرقة</a></b> — <b><a href="/place.html?p=maarra">المعرة</a></b> — <b><a href="/place.html?p=salahuddin">قلعة صلاح الدين</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد</a></b> — <b><a href="/place.html?p=qanawat">قنوات</a></b> — <b><a href="/place.html?p=salhad">صلخد</a></b> — <b><a href="/place.html?p=deirezor">دير الزور</a></b> — <b><a href="/place.html?p=tellbrak">تل براك</a></b> — <b><a href="/place.html?p=qatna">قطنا</a></b> — <b><a href="/place.html?p=tellhalaf">تل حلف</a></b> — <b><a href="/place.html?p=amrit">عمريت</a></b> — <b><a href="/place.html?p=saida">صيدا</a></b> — <b><a href="/place.html?p=marqab">قلعة المرقب</a></b> — <b><a href="/place.html?p=sergilla">سرجيلا</a></b> — <b><a href="/place.html?p=suwayda">السويداء</a></b> — <b><a href="/place.html?p=lijjah">اللَّجاة</a></b> — <b><a href="/place.html?p=busraharir">بصر الحرير</a></b> — <b><a href="/place.html?p=izraa">إزرع</a></b> — <b><a href="/place.html?p=jasim">جاسم</a></b> — <b><a href="/place.html?p=telharra"> تل الحارة</a></b> — <b><a href="/place.html?p=albara"> البارة</a></b>';
+  box.innerHTML = ' 47 رحلة جاهزة: <b><a href="/place.html?p=jeeza">الجيزة 1950</a></b> — <b><a href="/place.html?p=bosra">بصرى الشام</a></b> — <b><a href="/place.html?p=palmyra">تدمر</a></b> — <b><a href="/place.html?p=damascus">دمشق القديمة</a></b> — <b><a href="/place.html?p=maaloula">معلولا</a></b> — <b><a href="/place.html?p=saidnaya">صيدنايا</a></b> — <b><a href="/place.html?p=arwad">أرواد</a></b> — <b><a href="/place.html?p=tartus">طرطوس</a></b> — <b><a href="/place.html?p=shahba">شهبا</a></b> — <b><a href="/place.html?p=ugarit">أوغاريت</a></b> — <b><a href="/place.html?p=ebla">إبلا</a></b> — <b><a href="/place.html?p=mari">ماري</a></b> — <b><a href="/place.html?p=dura">دورا أوروبوس</a></b> — <b><a href="/place.html?p=apamea">أفاميا</a></b> — <b><a href="/place.html?p=emar">إيمار</a></b> — <b><a href="/place.html?p=rusafa">الرصافة</a></b> — <b><a href="/place.html?p=hayr">الحير الشرقي</a></b> — <b><a href="/place.html?p=raqqa">الرقة</a></b> — <b><a href="/place.html?p=maarra">المعرة</a></b> — <b><a href="/place.html?p=salahuddin">قلعة صلاح الدين</a></b> — <b><a href="/place.html?p=citadel">قلعة دمشق</a></b> — <b><a href="/place.html?p=aleppo">قلعة حلب</a></b> — <b><a href="/place.html?p=homs">قلعة حمص</a></b> — <b><a href="/place.html?p=khalid">مسجد خالد</a></b> — <b><a href="/place.html?p=qanawat">قنوات</a></b> — <b><a href="/place.html?p=salhad">صلخد</a></b> — <b><a href="/place.html?p=deirezor">دير الزور</a></b> — <b><a href="/place.html?p=tellbrak">تل براك</a></b> — <b><a href="/place.html?p=qatna">قطنا</a></b> — <b><a href="/place.html?p=tellhalaf">تل حلف</a></b> — <b><a href="/place.html?p=amrit">عمريت</a></b> — <b><a href="/place.html?p=saida">صيدا</a></b> — <b><a href="/place.html?p=marqab">قلعة المرقب</a></b> — <b><a href="/place.html?p=sergilla">سرجيلا</a></b> — <b><a href="/place.html?p=suwayda">السويداء</a></b> — <b><a href="/place.html?p=lijjah">اللَّجاة</a></b> — <b><a href="/place.html?p=busraharir">بصر الحرير</a></b> — <b><a href="/place.html?p=izraa">إزرع</a></b> — <b><a href="/place.html?p=jasim">جاسم</a></b> — <b><a href="/place.html?p=telharra"> تل الحارة</a></b> — <b><a href="/place.html?p=albara"> البارة</a></b>';
 }
 function soon(){
   document.getElementById('add').scrollIntoView({behavior:'smooth'});
